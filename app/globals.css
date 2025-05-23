@@ -1,0 +1,135 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 40, 40, 40;
+  --background-rgb: 248, 248, 248;
+  --accent-color: #722f37;
+  --accent-hover: #a55567;
+  --card-bg: 255, 255, 255;
+  --card-border: 235, 235, 235;
+  --text-muted: 110, 110, 110;
+  --text-light: 150, 150, 150;
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: rgb(var(--background-rgb));
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.3s ease-out forwards;
+}
+
+/* Custom radial gradient for transition */
+.bg-radial-burgundy {
+  background: radial-gradient(circle, rgba(114, 47, 55, 0.3) 0%, rgba(114, 47, 55, 0) 70%);
+}
+
+/* Subtle floating animation for decorative elements */
+@keyframes float {
+  0% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-10px) rotate(5deg);
+  }
+  100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+}
+
+.transition-gradient .absolute {
+  animation: float 15s ease-in-out infinite;
+}
+
+.transition-gradient .absolute:nth-child(2) {
+  animation-delay: -5s;
+}
+
+.transition-gradient .absolute:nth-child(3) {
+  animation-delay: -10s;
+}
+
+.perspective-1000 {
+  perspective: 1000px;
+}
+
+.preserve-3d {
+  transform-style: preserve-3d;
+}
+
+.backface-hidden {
+  backface-visibility: hidden;
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7);
+  }
+  70% {
+    transform: scale(1.1);
+    box-shadow: 0 0 0 10px rgba(37, 211, 102, 0);
+  }
+}
+
+.animate-pulse {
+  animation: pulse 2s infinite;
+}
+
+@keyframes modalFadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.animate-modal-in {
+  animation: modalFadeIn 0.2s ease-out forwards;
+}
+
+/* Hero section specific styles */
+@media (max-width: 640px) {
+  .text-6xl {
+    font-size: 3.5rem;
+  }
+  .text-5xl {
+    font-size: 2.5rem;
+  }
+}
+
+/* Gradient text animation */
+.gradient-text-animate {
+  background-size: 200% auto;
+  animation: gradient-shift 3s ease infinite;
+}
+
+@keyframes gradient-shift {
+  0% {
+    background-position: 0% center;
+  }
+  50% {
+    background-position: 100% center;
+  }
+  100% {
+    background-position: 0% center;
+  }
+}
