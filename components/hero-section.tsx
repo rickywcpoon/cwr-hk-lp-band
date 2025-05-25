@@ -3,7 +3,6 @@
 import { useState, useEffect } from "react"
 import Image from "next/image"
 import Link from "next/link"
-import { Play } from "lucide-react"
 
 interface HeroSectionProps {
   whatsappLink: string
@@ -55,8 +54,12 @@ export default function HeroSection({ whatsappLink }: HeroSectionProps) {
       </header>
 
       {/* Background Image with Gradient Overlay */}
-      <div className="absolute inset-0">
-        <Image src="/hero-band-restoration.webp" alt="專業手錶錶帶修復服務" fill className="object-cover" priority />
+      <div 
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+        style={{
+          backgroundImage: 'url(/hero-band-restoration.webp)',
+        }}
+      >
         <div className="absolute inset-0" style={{
           background: 'linear-gradient(to bottom, rgba(15, 37, 35, 0.8) 0%, rgba(15, 37, 35, 0.4) 60%, transparent 70%)'
         }}></div>

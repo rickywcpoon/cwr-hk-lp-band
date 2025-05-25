@@ -58,7 +58,7 @@ export default function RootLayout({
         <meta property="og:image:width" content="288" />
         <meta property="og:image:height" content="77" />
         <meta property="og:image:type" content="image/png" />
-        <link rel="preload" href="/images/hero.webp" as="image" />
+        <link rel="preload" href="/hero-band-restoration.webp" as="image" type="image/webp" />
         <link rel="preconnect" href="https://wa.me" />
       </head>
       <body className="font-inter">{children}</body>
