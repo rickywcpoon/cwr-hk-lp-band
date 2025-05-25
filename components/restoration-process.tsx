@@ -12,7 +12,7 @@ const restorationSteps = [
     titleChinese: "增強結構，更換每一格的內柱芯",
     description: "我們通過更換每個鏈節中的內部柱芯來加強結構，確保錶帶恢復原有的穩定性和耐用性。",
     descriptionChinese: "我們通過更換每個鏈節中的內部柱芯來加強結構，確保錶帶恢復原有的穩定性和耐用性。",
-    image: "/placeholder.svg?key=step1",
+    image: "/process/step-1.webp",
   },
   {
     id: 2,
@@ -20,7 +20,7 @@ const restorationSteps = [
     titleChinese: "拉緊錶帶，還原近乎全新狀態",
     description: "我們精心拉緊手錶帶，使其恢復到接近全新的狀態，消除鬆動並恢復適當的貼合感和手感。",
     descriptionChinese: "我們精心拉緊手錶帶，使其恢復到接近全新的狀態，消除鬆動並恢復適當的貼合感和手感。",
-    image: "/placeholder.svg?key=step2",
+    image: "/process/step-2.webp",
   },
   {
     id: 3,
@@ -28,7 +28,7 @@ const restorationSteps = [
     titleChinese: "鋼或18K金雷射修補崩，重新塑造外型",
     description: "使用先進的激光焊接技術，我們修復鋼或18K金錶帶上的損壞區域，精確地將外觀重塑為原始形態。",
     descriptionChinese: "使用先進的激光焊接技術，我們修復鋼或18K金錶帶上的損壞區域，精確地將外觀重塑為原始形態。",
-    image: "/placeholder.svg?key=step3",
+    image: "/process/step-3.webp",
   },
   {
     id: 4,
@@ -36,7 +36,7 @@ const restorationSteps = [
     titleChinese: "去除花痕，還原原廠打磨及拋光",
     description: "我們精細地去除刮痕並恢復原廠的拋光處理，使錶帶恢復原有的光澤和亮度。",
     descriptionChinese: "我們精細地去除刮痕並恢復原廠的拋光處理，使錶帶恢復原有的光澤和亮度。",
-    image: "/placeholder.svg?key=step4",
+    image: "/process/step-4.webp",
   },
 ]
 

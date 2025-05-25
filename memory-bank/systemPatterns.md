@@ -4,41 +4,116 @@
 
 ## System Architecture Overview
 
-*   **Frontend Framework:** Next.js (App Router)
-*   **UI Layer:** React with server components and client components as needed.
-*   **Styling:** Tailwind CSS with a pre-configured design system (HSL variables, custom radii) likely managed via Shadcn/UI or a similar methodology.
-*   **Component-Based Architecture:** The project uses a component-based approach, with UI elements likely organized in `components/ui` (for reusable Shadcn/UI-like components) and `components/` for more specific or composite components.
-*   **Directory Structure:** Standard Next.js App Router structure (`app/` for routes, `public/` for static assets, `lib/` for utilities, `hooks/` for custom hooks).
+- **Frontend Framework:** Next.js (App Router) optimized for landing page performance
+- **Rendering Strategy:** Static Site Generation (SSG) prioritized for speed, with selective client components
+- **UI Layer:** React with minimal client-side JavaScript for maximum performance
+- **Styling:** Tailwind CSS with critical path optimization for above-the-fold content
+- **Performance-First Architecture:** Every technical decision evaluated against LCP <2.5s requirement
+- **Conversion-Focused Design:** Component hierarchy designed to drive WhatsApp contact actions
 
 ## Key Technical Decisions
 
-*   **Adoption of Next.js App Router:** This dictates the routing, data fetching, and rendering patterns.
-*   **Use of TypeScript:** For static typing and improved code quality.
-*   **Reliance on Tailwind CSS for Styling:** Prioritizing utility-first CSS for rapid UI development and consistency.
-*   **Integration of Radix UI (likely via Shadcn/UI):** Leveraging headless components for accessibility and customizability.
-*   **Ignoring ESLint and TypeScript errors during build:** (As noted in `next.config.mjs`) This is a significant decision, potentially to speed up CI/CD or due to legacy issues, but carries risk.
-*   **Unoptimized Images in Next.js:** (As noted in `next.config.mjs`) This implies either a specific deployment target that handles optimization differently or a conscious decision to bypass Next.js image optimization.
-*   **Use of `pnpm`:** For package management.
+### **Performance-Critical Decisions**
+- **Static generation preferred**: Use Next.js SSG where possible for fastest loading
+- **Image optimization enabled and mandatory**: Next.js image optimization is active
+- **Minimal client-side JavaScript**: Avoid heavy bundles that impact LCP
+- **Critical CSS inlining**: Above-the-fold styles must load immediately (achieved via Tailwind utility classes and Next.js build process)
+- **Resource preloading**: Critical assets (fonts, hero image) are preloaded
+
+### **Landing Page Specific Decisions**
+- **Single-page architecture**: No navigation, focused conversion flow
+- **Mobile-first approach**: Ad traffic primarily mobile, design accordingly
+- **WhatsApp integration**: Primary CTA method, sticky widget implementation
+- **Conversion tracking**: (Future consideration) Every interaction measurable for optimization
+
+### **Configuration Status**
+- **Image optimization ENABLED**
+- **Build errors NOT ignored**: ESLint and TypeScript errors are checked during build
+- **Performance monitoring**: Basic checks via browser dev tools; formal tracking to be implemented
 
 ## Design Patterns in Use
 
-*   **Server Components & Client Components (Next.js):** For optimizing rendering and interactivity.
-*   **Utility-First CSS (Tailwind):** For styling.
-*   **Headless UI Components (Radix UI):** For building custom UIs with accessible foundations.
-*   **Provider Pattern (React Context):** Likely used by `next-themes` for theme management and potentially for other global state.
-*   **Hooks (React):** Custom hooks are likely in the `hooks/` directory for reusable logic.
-*   **Directory-based Routing (Next.js App Router).**
-*   **Configuration-as-Code:** `tailwind.config.ts`, `tsconfig.json`, `next.config.mjs` define key aspects of the system.
+### **Performance Patterns**
+- **Critical Path Optimization**: Above-the-fold content prioritized
+- **Progressive Enhancement**: Core functionality works without JavaScript
+- **Lazy Loading**: Below-the-fold content loaded after critical path (Next.js default behavior for images not marked `priority`)
+- **Resource Hints**: Preload for fonts and hero image
 
-## Component Relationships
+### **Conversion Patterns**
+- **Single Call-to-Action (CTA)**: WhatsApp contact as primary action
+- **Sticky Elements**: WhatsApp widget always accessible
+- **Trust Signals**: Credibility elements (experience, testimonials, expertise) integrated throughout
+- **Friction Reduction**: Minimal steps between landing and contact
 
-*   **Layouts and Pages:** The `app/` directory will define layouts that wrap pages/routes. Server components will likely fetch data and pass it to client components.
-*   **Shadcn/UI Components:** `components/ui` likely houses base UI elements (Button, Card, Input, etc.) that are used to build more complex components in `components/` or directly in pages within `app/`.
-*   **Shared Utilities:** `lib/utils.ts` (a common pattern with Shadcn/UI) likely contains helper functions, especially for `clsx` and `tailwind-merge`.
+### **Technical Patterns**
+- **Static Site Generation (Next.js)**: For optimal loading performance
+- **Component Composition (React)**: Reusable UI elements
+- **Utility-First CSS (Tailwind)**: Rapid styling with performance considerations
+- **Headless Components (Radix UI)**: Used selectively via Shadcn/UI components
+
+## Component Relationships (Current Structure)
+
+```
+app/page.tsx (SSG)
+├── components/hero-section.tsx (Critical Path)
+│   ├── Header (part of Hero)
+│   ├── Headline, Value Proposition, Subtitles
+│   └── Primary CTA (WhatsApp)
+├── components/loose-vs-right-fit.tsx
+├── components/restoration-process.tsx
+├── "Why Choose Us" Section (in app/page.tsx)
+├── components/image-compare-slider.tsx (Before/After Gallery)
+├── components/brand-carousel.tsx (Brand Expertise)
+├── Pricing Section (in app/page.tsx)
+├── components/testimonials-section.tsx (Trust & Credibility)
+├── Final CTA Section (in app/page.tsx)
+└── components/WhatsappChatWidget.tsx (Sticky)
+```
 
 ## Critical Implementation Paths
 
-*   **Routing and Data Fetching:** Defined by the Next.js App Router structure within the `app/` directory.
-*   **UI Component Implementation:** Based on Tailwind CSS and Radix UI, likely following Shadcn/UI patterns.
-*   **Form Handling:** Using `react-hook-form` and `zod` for forms throughout the application.
-*   **Theming:** Managed by `next-themes` and configured in `tailwind.config.ts`. 
+### **Performance Critical Path (Current State - Optimized)**
+1. HTML delivery
+2. Critical CSS load (Tailwind + Next.js)
+3. Core content render (FCP)
+4. Images load (optimized, priority for hero)
+5. Complete page load (LCP <2.5s target being met)
+
+### **Conversion Critical Path (Current Focus)**
+1. Immediate value communication (hero section)
+2. Trust establishment (credentials, testimonials, expertise throughout)
+3. Clear action (WhatsApp CTA visibility and consistency)
+4. Contact completion (WhatsApp integration)
+
+### **Technical Implementation Path (Revised)**
+1. **COMPLETED**: Configuration fixes, image optimization, font optimization
+2. **ONGOING**: Iterative styling and content refinements for conversion optimization
+3. **FUTURE**: Formal performance monitoring implementation
+
+## Optimized Section Flow (Iterative Approach)
+
+*The page structure is evolving based on user feedback, aiming for a conversion-optimized flow. The case-restoration.classicwatchrepair.com site serves as a reference.*
+
+### **Current Key Sections & Their Purpose**
+- **Hero Section**: Grab attention, strong value proposition, immediate CTA
+- **Loose vs Right Fit**: Address a specific customer pain point
+- **Restoration Process**: Explain the service steps simply
+- **Why Choose Us**: Highlight key differentiators and trust factors (including "Bracelet Magician")
+- **Image Compare Slider**: Visual proof of results
+- **Brand Carousel**: Showcase expertise with high-end brands
+- **Pricing Section**: Provide transparency on investment
+- **Testimonials Section**: Build social proof and trust
+- **Final CTA Section**: Strong closing message to encourage contact
+
+### **Conversion Optimization Principles Applied**
+
+#### **Above-the-fold Optimization**
+- Clear value proposition within hero
+- Immediate CTA visibility
+- Trust signals integrated early
+
+#### **Progressive Disclosure**
+- Information presented logically to guide the user towards conversion
+
+#### **Mobile-First Considerations**
+- Responsive design is a priority, with ongoing checks for readability and usability on mobile 

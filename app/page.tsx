@@ -1,7 +1,8 @@
 import Link from "next/link"
-import { ChevronRight, Clock, Shield, PenToolIcon as Tool, Award, MessageCircle } from "lucide-react"
+import { ChevronRight, Clock, Shield, PenToolIcon as Tool, Award, MessageCircle, MessageSquareText } from "lucide-react"
 import WhatsappWidgetLoader from "@/components/whatsapp-widget-loader"
 import HeroSection from "@/components/hero-section"
+import LooseVsRightFit from "@/components/loose-vs-right-fit"
 import BrandCarousel from "@/components/brand-carousel"
 import ImageCompareSlider from "@/components/image-compare-slider"
 import ServiceCard from "@/components/service-card"
@@ -17,147 +18,135 @@ export default function Home() {
       {/* Hero Section */}
       <HeroSection whatsappLink={whatsappLink} />
 
-      {/* Services Section */}
-      <section id="services" className="py-20 bg-gradient-to-b from-gray-100 to-gray-200">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl font-bold mb-4 text-gray-900">我們的專業服務</h2>
-            <p className="text-gray-600 max-w-3xl mx-auto">我們提供專為奢華手錶錶帶量身定制的全面修復和維修服務。</p>
-          </div>
+      {/* Loose vs Right Fit Section */}
+      <LooseVsRightFit whatsappLink={whatsappLink} />
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <ServiceCard
-              icon={<Tool className="h-10 w-10" />}
-              title="錶節修復"
-              description="緊固鬆弛的錶節，恢復手錶錶帶的原有貼合感和手感。"
-            />
-            <ServiceCard
-              icon={<Clock className="h-10 w-10" />}
-              title="刮痕去除與拋光"
-              description="專業拋光去除刮痕，恢復手錶錶帶的原有光澤。"
-            />
-            <ServiceCard
-              icon={<Shield className="h-10 w-10" />}
-              title="結構修復"
-              description="專業修復損壞的錶扣、斷裂的錶節和其他結構問題。"
-            />
-          </div>
-
-          <div className="mt-12 text-center">
-            <Link
-              href={whatsappLink}
-              className="bg-gradient-to-r from-burgundy to-burgundy-light hover:from-burgundy-light hover:to-burgundy text-white font-medium px-8 py-4 rounded-md inline-flex items-center justify-center transition-all duration-300 hover:shadow-lg"
-            >
-              通過WhatsApp諮詢
-              <MessageCircle className="ml-2 h-5 w-5" />
-            </Link>
-          </div>
-        </div>
-      </section>
+      
 
       {/* Restoration Process Section */}
-      <section id="restoration-process" className="py-20 bg-white relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-white via-white to-gray-100 opacity-80"></div>
+      <section id="restoration-process" className="py-20 bg-neutral-lighter relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-neutral-lighter via-neutral-lighter to-neutral-light opacity-80"></div>
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <RestorationProcess />
 
           <div className="mt-12 text-center">
             <Link
               href={whatsappLink}
-              className="bg-gradient-to-r from-burgundy to-burgundy-light hover:from-burgundy-light hover:to-burgundy text-white font-medium px-8 py-4 rounded-md inline-flex items-center justify-center transition-all duration-300 hover:shadow-lg"
+              className="bg-neutral-lightest text-neutral-darker hover:bg-neutral-light border-2 border-neutral-darker font-medium px-8 py-4 rounded-md inline-flex items-center justify-center transition-all duration-300 hover:shadow-lg"
             >
-              討論您的修復需求
+              諮詢我的專屬方案
               <MessageCircle className="ml-2 h-5 w-5" />
             </Link>
           </div>
         </div>
       </section>
 
-      {/* Why Choose Us Section */}
-      <section className="py-20 bg-gradient-to-b from-gray-900 to-gray-800 text-white">
+      {/* Why Choose Us Section - USP Section */}
+      <section className="py-20 bg-neutral-darkest text-neutral-lighter">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl font-bold mb-4 text-white">Why Choose Classic Watch Repair</h2>
-            <p className="text-gray-300 max-w-3xl mx-auto">我們結合傳統工藝與現代技術，提供卓越的修復效果。</p>
+            <h2 className="text-3xl font-bold mb-4 text-neutral-lighter">為何放心將手錶交給我們？</h2>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            <div className="bg-gradient-to-br from-gray-800 to-gray-700 p-8 rounded-lg shadow-lg border border-gray-700 text-center">
-              <Award className="h-12 w-12 text-burgundy-light mx-auto mb-4" />
-              <h3 className="text-xl font-semibold mb-3 text-white">認證專業技術</h3>
-              <p className="text-gray-300">擁有多年奢華手錶修復經驗的專業技師。</p>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-8">
+            <div className="bg-gradient-to-br from-neutral-darker to-neutral-dark p-8 rounded-lg shadow-lg border border-neutral-dark text-center">
+              <Shield className="h-12 w-12 text-casal-light mx-auto mb-4" />
+              <h3 className="text-xl font-semibold mb-3 text-neutral-lighter">守護原裝・杜絕耗損</h3>
+              <p className="text-neutral-light text-sm">堅持無損技術，激光焊接，保留原有線條，確保價值。</p>
             </div>
-            <div className="bg-gradient-to-br from-gray-800 to-gray-700 p-8 rounded-lg shadow-lg border border-gray-700 text-center">
-              <Clock className="h-12 w-12 text-burgundy-light mx-auto mb-4" />
-              <h3 className="text-xl font-semibold mb-3 text-white">快速周轉</h3>
-              <p className="text-gray-300">高效服務，不犧牲品質和細節關注。</p>
+            <div className="bg-gradient-to-br from-neutral-darker to-neutral-dark p-8 rounded-lg shadow-lg border border-neutral-dark text-center">
+              <Tool className="h-12 w-12 text-casal-light mx-auto mb-4" />
+              <h3 className="text-xl font-semibold mb-3 text-neutral-lighter">頂尖工藝・專注細節</h3>
+              <p className="text-neutral-light text-sm">經驗技師處理「千年積」花痕、鬆脫錶帶，還原精密度。</p>
             </div>
-            <div className="bg-gradient-to-br from-gray-800 to-gray-700 p-8 rounded-lg shadow-lg border border-gray-700 text-center">
-              <Tool className="h-12 w-12 text-burgundy-light mx-auto mb-4" />
-              <h3 className="text-xl font-semibold mb-3 text-white">專業工具</h3>
-              <p className="text-gray-300">使用品牌專用設備進行精確和正宗的修復。</p>
+            <div className="bg-gradient-to-br from-neutral-darker to-neutral-dark p-8 rounded-lg shadow-lg border border-neutral-dark text-center">
+              <Award className="h-12 w-12 text-casal-light mx-auto mb-4" />
+              <h3 className="text-xl font-semibold mb-3 text-neutral-lighter">重拾完美・信心保證</h3>
+              <p className="text-neutral-light text-sm">目標「回復開箱狀態」。滿意保證，佩戴重拾自信。</p>
             </div>
-            <div className="bg-gradient-to-br from-gray-800 to-gray-700 p-8 rounded-lg shadow-lg border border-gray-700 text-center">
-              <Shield className="h-12 w-12 text-burgundy-light mx-auto mb-4" />
-              <h3 className="text-xl font-semibold mb-3 text-white">滿意保證</h3>
-              <p className="text-gray-300">我們以全面的服務保證支持我們的工作。</p>
+          </div>
+
+          {/* Michael Young Hero Card */}
+          <div className="bg-gradient-to-br from-casal-darker to-neutral-darker p-8 rounded-lg shadow-xl border border-casal-dark">
+            <div className="flex flex-col lg:flex-row items-center lg:items-start gap-8">
+              {/* Portrait */}
+              <div className="flex-shrink-0">
+                <div className="relative">
+                  <img
+                    src="/michael-young.webp"
+                    alt="Michael Young - 錶帶魔術師"
+                    className="w-32 h-32 lg:w-40 lg:h-40 rounded-full object-cover border-4 border-casal-light shadow-lg"
+                  />
+                  <div className="absolute inset-0 rounded-full bg-gradient-to-br from-casal-light/20 to-transparent"></div>
+                </div>
+              </div>
+              
+              {/* Content */}
+              <div className="flex-1 text-center lg:text-left">
+                <div className="flex items-center justify-center lg:justify-start mb-4">
+                  <MessageSquareText className="h-8 w-8 text-casal-light mr-3" />
+                  <h3 className="text-2xl font-bold text-neutral-lighter">「錶帶魔術師」</h3>
+                </div>
+                <h4 className="text-lg font-semibold text-casal-light mb-3">Michael Young</h4>
+                <p className="text-neutral-light leading-relaxed">
+                  這別名來自手錶收藏家圈子，是不同客人對 Classic Watch Repair 創辦人Michael Young 修復舊金屬錶帶工藝的一個讚譽和肯定。憑藉多年專業經驗，他能讓看似無法挽救的錶帶重獲新生。
+                </p>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
       {/* Before & After Gallery */}
-      <section className="py-20 bg-white">
+      <section className="py-20 bg-neutral-lightest">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl font-bold mb-4 text-gray-900">修復前後對比</h2>
-            <p className="text-gray-600 max-w-3xl mx-auto">見證我們的修復服務為奢華手錶錶帶帶來的顯著變化。</p>
+            <h2 className="text-3xl font-bold mb-4 text-neutral-darkest">真實案例・「錶」然一新</h2>
+            <p className="text-neutral-dark max-w-3xl mx-auto text-sm">
+            左右滑動，見證「飽經風霜」到「完美如初」的蛻變。
+            </p>
           </div>
 
           <div className="max-w-4xl mx-auto pb-8">
             <ImageCompareSlider />
+            <p className="text-center text-neutral-dark mt-4 text-sm">細節執著，完美追求。</p>
           </div>
 
           <div className="mt-12 text-center">
             <Link
               href={whatsappLink}
-              className="bg-gradient-to-r from-burgundy to-burgundy-light hover:from-burgundy-light hover:to-burgundy text-white font-medium px-8 py-4 rounded-md inline-flex items-center justify-center transition-all duration-300 hover:shadow-lg"
+              className="bg-neutral-lightest text-neutral-darker hover:bg-neutral-light border-2 border-neutral-darker font-medium px-8 py-4 rounded-md inline-flex items-center justify-center transition-all duration-300 hover:shadow-lg"
             >
-              修復您的手錶錶帶
+              讓我的手錶也煥然一新
               <ChevronRight className="ml-2 h-5 w-5" />
             </Link>
           </div>
         </div>
       </section>
 
-      {/* Subtle Gradient Transition - DARKER GRADIENT */}
-      <div className="transition-gradient">
-        <div className="h-40 bg-gradient-to-b from-white via-gray-100 to-gray-200 relative overflow-hidden">
-          {/* Subtle decorative elements */}
-          <div className="absolute w-full h-full opacity-5">
-            <div className="absolute top-1/4 left-1/4 w-32 h-32 rounded-full border border-burgundy transform rotate-45"></div>
-            <div className="absolute top-1/2 right-1/3 w-24 h-24 rounded-full border border-burgundy-light transform -rotate-12"></div>
-            <div className="absolute bottom-1/4 left-2/3 w-16 h-16 rounded-full border border-burgundy transform rotate-30"></div>
+      {/* Brands Section - ServiceBrands style */}
+      <section className="py-16 bg-neutral-lighter">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-6">
+            <h2 className="text-3xl font-bold mb-4 text-neutral-darkest">頂級名錶・信心修復</h2>
+            <p className="text-neutral-dark max-w-3xl mx-auto">
+            精通Rolex、Patek Phillipe、Audemars Piguet等各大品牌錶帶修復。
+            </p>
           </div>
-
-          {/* Subtle radial gradient spots */}
-          <div className="absolute top-1/2 left-1/4 w-64 h-64 rounded-full bg-radial-burgundy opacity-[0.04] blur-2xl transform -translate-x-1/2 -translate-y-1/2"></div>
-          <div className="absolute bottom-0 right-1/4 w-96 h-96 rounded-full bg-radial-burgundy opacity-[0.03] blur-3xl transform translate-y-1/2"></div>
         </div>
-      </div>
-
-      {/* Brands Section - MOVED HERE - DARKER BACKGROUND */}
-      <section className="py-16 bg-gray-200">
         <BrandCarousel />
       </section>
 
-      {/* Pricing Section */}
-      <section className="py-20 bg-gradient-to-b from-gray-100 to-gray-200">
+      {/* Pricing Section - ServiceProcess style */}
+      <section className="py-20 bg-cocoa-bean-dark">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl font-bold mb-4 text-gray-900">修復價格</h2>
-            <p className="text-gray-600 max-w-3xl mx-auto">
-              我們的奢華手錶錶帶修復服務價格透明。價格根據材質、型號和狀況而有所不同。
+            <h2 className="text-3xl font-bold mb-4 text-neutral-lighter">明智投資・遠勝天價更換</h2>
+            <p className="text-neutral-light max-w-3xl mx-auto">
+            原廠換帶極昂貴，且未必能修復「鬆」等問題。專業修復費用更合理，針對性解決花痕、崩凹、鬆弛。
+            </p>
+            <p className="text-neutral-light max-w-3xl mx-auto mt-4">
+            錶帶狀況各異，依材質、損耗及複雜性提供個人化報價。
             </p>
           </div>
 
@@ -166,11 +155,14 @@ export default function Home() {
           <div className="mt-12 text-center">
             <Link
               href={whatsappLink}
-              className="bg-gradient-to-r from-burgundy to-burgundy-light hover:from-burgundy-light hover:to-burgundy text-white font-medium px-8 py-4 rounded-md inline-flex items-center justify-center transition-all duration-300 hover:shadow-lg"
+              className="bg-neutral-lightest text-neutral-darker hover:bg-neutral-light border-2 border-neutral-darker font-medium px-8 py-4 rounded-md inline-flex items-center justify-center transition-all duration-300 hover:shadow-lg"
             >
-              獲取定制報價
+              免費初步評估
               <ChevronRight className="ml-2 h-5 w-5" />
             </Link>
+            <p className="text-neutral-light max-w-2xl mx-auto mt-4 text-sm">
+            請放心，我們會在詳細檢查並與您確認修復方案及費用後，才會開始任何工作。絕無隱藏收費。
+            </p>
           </div>
         </div>
       </section>
@@ -179,18 +171,22 @@ export default function Home() {
       <TestimonialsSection />
 
       {/* CTA Section */}
-      <section className="py-20 bg-white">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-4xl mx-auto text-center bg-gradient-to-br from-gray-900 to-gray-800 p-12 rounded-lg shadow-lg text-white">
-            <h2 className="text-3xl md:text-4xl font-bold mb-6 text-white">準備好修復您的手錶錶帶了嗎？</h2>
-            <p className="text-xl text-gray-300 mb-8">
-              立即聯繫我們獲取免費諮詢和報價。我們的專家已準備好幫助您恢復奢華手錶錶帶的生命力。
+      <section
+        className="py-28 relative bg-cover bg-center"
+        style={{ backgroundImage: "url('/central-workshop-vibe.webp')" }}
+      >
+        <div className="absolute inset-0 bg-black/60"></div>
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative">
+          <div className="max-w-4xl mx-auto text-center text-neutral-lightest">
+            <h2 className="text-3xl md:text-4xl font-bold mb-6 text-neutral-lightest">手錶值得擁有第二次「新」生。</h2>
+            <p className="text-xl text-neutral-lightest mb-8">
+            鬆弛、刮痕、損傷？專業修復，回復完美，重拾價值。
             </p>
             <Link
               href={whatsappLink}
-              className="bg-gradient-to-r from-burgundy to-burgundy-light hover:from-burgundy-light hover:to-burgundy text-white font-bold px-10 py-5 rounded-md inline-flex items-center justify-center text-lg transition-all duration-300 hover:shadow-lg"
+              className="bg-neutral-lightest text-neutral-darker hover:bg-neutral-light border-2 border-neutral-darker font-bold px-10 py-5 rounded-md inline-flex items-center justify-center text-lg transition-all duration-300 hover:shadow-lg"
             >
-              通過WhatsApp聯繫我們
+             預約免費初步評估
               <MessageCircle className="ml-2 h-6 w-6" />
             </Link>
           </div>
@@ -198,29 +194,10 @@ export default function Home() {
       </section>
 
       {/* Footer */}
-      <footer className="py-12 bg-gradient-to-b from-gray-100 to-gray-200 border-t border-gray-300">
+      <footer className="py-12 bg-casal-darker border-t border-casal-dark">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col md:flex-row justify-between items-center">
-            <div className="mb-6 md:mb-0">
-              <h3 className="text-2xl font-bold text-gray-900">Classic Watch Repair</h3>
-              <p className="text-gray-600 mt-2">奢華手錶錶帶修復專家</p>
-            </div>
-            <div className="flex flex-col md:flex-row gap-8">
-              <Link href="#services" className="text-gray-700 hover:text-burgundy transition-colors">
-                服務項目
-              </Link>
-              <Link href="#" className="text-gray-700 hover:text-burgundy transition-colors">
-                關於我們
-              </Link>
-              <Link href="#" className="text-gray-700 hover:text-burgundy transition-colors">
-                隱私政策
-              </Link>
-              <Link href="#" className="text-gray-700 hover:text-burgundy transition-colors">
-                服務條款
-              </Link>
-            </div>
-          </div>
-          <div className="mt-8 pt-8 border-t border-gray-300 text-center text-gray-600">
+          
+          <div className="mt-8 pt-8 border-casal-dark text-left text-neutral-light">
             <p>© {new Date().getFullYear()} Classic Watch Repair. All rights reserved.</p>
           </div>
         </div>

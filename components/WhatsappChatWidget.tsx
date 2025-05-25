@@ -119,7 +119,7 @@ const WhatsappChatWidget = () => {
           <div className="flex flex-shrink-0 items-center justify-between bg-gray-900 p-4 text-white">
             <div className="flex items-center gap-3">
               {/* Logo */}
-              <Image src="/placeholder.svg?key=njbug" alt="CWR Logo" width={40} height={40} className="rounded-full" />
+              <Image src="/cwr-whatsapp-logo.webp" alt="CWR Logo" width={40} height={40} className="rounded-full" />
               <div>
                 <div className="font-semibold">Barry@CWR</div>
                 <div className="text-xs text-gray-200">Typically replies within a day</div>
@@ -135,8 +135,7 @@ const WhatsappChatWidget = () => {
             className="flex-grow overflow-y-auto p-4"
             style={{
               backgroundColor: "#E5DDD5",
-              backgroundImage:
-                "url(/placeholder.svg?height=400&width=400&query=whatsapp%20chat%20background%20pattern)",
+              backgroundImage: "url(/whatsapp-bubble-background.webp)",
               backgroundSize: "cover",
               backgroundPosition: "center",
             }}
@@ -160,7 +159,7 @@ const WhatsappChatWidget = () => {
             <button
               id="cta-widget-chat-now"
               onClick={handleChatNow}
-              className="flex w-full items-center justify-center gap-2 rounded-full bg-[#25D366] py-3 text-center font-medium text-white shadow-md transition hover:scale-[1.02] hover:bg-[#128C7E]"
+              className="flex w-full items-center justify-center gap-2 rounded-md bg-[#25D366] py-3 text-center font-medium text-white shadow-md transition hover:scale-[1.02] hover:bg-[#128C7E]"
             >
               <FaWhatsapp className="h-5 w-5" />
               Chat Now

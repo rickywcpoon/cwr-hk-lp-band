@@ -15,10 +15,10 @@ import { ReactCompareSlider, ReactCompareSliderImage } from "react-compare-slide
 const imagePairs = [
   {
     id: "pair1",
-    label: "歐米茄超霸",
-    before: "/comparison/pair1-before.webp",
-    after: "/comparison/pair1-after.webp",
-    altPrefix: "歐米茄超霸修復",
+    label: "手錶錶帶修復效果",
+    before: "/image-compare-slider-before.webp",
+    after: "/image-compare-slider-after.webp",
+    altPrefix: "錶帶修復",
   },
   {
     id: "pair2",
@@ -65,56 +65,50 @@ export function ImageCompareSlider() {
 
         {/* Main Slider with Shadow */}
         <div
-          className="relative w-full overflow-hidden shadow-2xl rounded-lg bg-black z-10 
+          className="relative w-full overflow-hidden shadow-2xl rounded-lg z-10 
                       transition-all duration-500 
                       hover:shadow-[0_10px_40px_-15px_rgba(114,47,55,0.5)]"
         >
           <ReactCompareSlider
             itemOne={
-              <div className="flex items-center justify-center bg-black">
-                <ReactCompareSliderImage
-                  src={selectedPair.before}
-                  alt={`${selectedPair.altPrefix} 修復前`}
-                  width={1024}
-                  height={1024}
-                  loading="lazy"
-                  style={{
-                    objectFit: "contain",
-                    objectPosition: "center",
-                    width: "100%",
-                    height: "100%",
-                    maxHeight: "60vh",
-                    display: "block",
-                    margin: "0 auto",
-                  }}
-                />
-              </div>
+              <ReactCompareSliderImage
+                src={selectedPair.before}
+                alt={`${selectedPair.altPrefix} 修復前`}
+                width={1024}
+                height={1024}
+                loading="lazy"
+                style={{
+                  objectFit: "cover",
+                  objectPosition: "center",
+                  width: "100%",
+                  height: "100%",
+                  maxHeight: "60vh",
+                  display: "block",
+                }}
+              />
             }
             itemTwo={
-              <div className="flex items-center justify-center bg-black">
-                <ReactCompareSliderImage
-                  src={selectedPair.after}
-                  alt={`${selectedPair.altPrefix} 修復後`}
-                  width={1024}
-                  height={1024}
-                  loading="lazy"
-                  style={{
-                    objectFit: "contain",
-                    objectPosition: "center",
-                    width: "100%",
-                    height: "100%",
-                    maxHeight: "60vh",
-                    display: "block",
-                    margin: "0 auto",
-                  }}
-                />
-              </div>
+              <ReactCompareSliderImage
+                src={selectedPair.after}
+                alt={`${selectedPair.altPrefix} 修復後`}
+                width={1024}
+                height={1024}
+                loading="lazy"
+                style={{
+                  objectFit: "cover",
+                  objectPosition: "center",
+                  width: "100%",
+                  height: "100%",
+                  maxHeight: "60vh",
+                  display: "block",
+                }}
+              />
             }
             style={{
               height: "auto",
               maxHeight: "60vh",
               width: "100%",
-              aspectRatio: "1/1",
+              aspectRatio: "3 / 2",
             }}
             className="rounded-lg"
             position={50}
@@ -123,38 +117,7 @@ export function ImageCompareSlider() {
         </div>
       </div>
 
-      {/* Selected Pair Label */}
-      <div className="mb-6 text-center">
-        <h3 className="text-2xl font-bold">{selectedPair.label}</h3>
-        <p className="text-gray-400">拖動滑塊比較修復效果</p>
-      </div>
-
-      {/* Thumbnail Selectors */}
-      <div className="flex justify-center space-x-3 sm:space-x-4">
-        {imagePairs.map((pair, index) => (
-          <button
-            key={pair.id}
-            onClick={() => setSelectedIndex(index)}
-            className={`relative overflow-hidden rounded-lg focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-burgundy transition-all duration-200 ease-in-out ${
-              selectedIndex === index
-                ? "opacity-100 ring-2 ring-burgundy ring-offset-2 scale-105" // Active style
-                : "opacity-60 hover:opacity-100" // Inactive style
-            }`}
-            aria-label={`選擇 ${pair.label} 對比`}
-          >
-            <Image
-              src={index === 0 ? pair.after : "/placeholder.svg?key=kbe7k"}
-              alt={`${pair.label} 縮略圖`}
-              width={96}
-              height={80}
-              className="w-20 h-16 sm:w-24 sm:h-20 object-cover"
-              sizes="(max-width: 640px) 80px, 96px"
-              placeholder="blur"
-              blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="
-            />
-          </button>
-        ))}
-      </div>
+      {/* Thumbnail Selectors and Label will be removed from here */}
     </div>
   )
 }

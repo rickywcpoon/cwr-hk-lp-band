@@ -10,24 +10,24 @@ const testimonials = [
     id: 1,
     rating: 5,
     quote: "對我的潛水者錶帶的修復工作非常出色。它看起來又像新的一樣，而且周轉時間令人印象深刻。",
-    name: "詹姆斯·威爾遜",
-    title: "勞力士收藏家",
+    name: "Ryan Lai",
+    title: "Rolex Submariner Watch Band Restoration",
     avatar: "/professional-man-portrait.png",
   },
   {
     id: 2,
     rating: 5,
     quote: "我對修復我的古董卡地亞錶帶持懷疑態度，但結果超出了我的預期。對細節的關注令人驚嘆。",
-    name: "陳曉芳",
-    title: "手錶愛好者",
+    name: "Edith C.",
+    title: "Yellow Gold Watch Band Scratch Removal and Tightening",
     avatar: "/professional-woman-portrait.png",
   },
   {
     id: 3,
     rating: 5,
-    quote: "我的皇家橡樹錶帶有明顯的刮痕，我以為是永久性的。修復後，它看起來就像剛從專賣店出來一樣。",
-    name: "麥可·湯普森",
-    title: "奢華時計收藏家",
+    quote: "The repair on my husband's President watch band was outstanding. It looks brand new.",
+    name: "Sarah Miller",
+    title: "President Watch Band Full Restoration",
     avatar: "/placeholder.svg?key=uk635",
   },
 ]
@@ -39,33 +39,30 @@ export default function TestimonialsSection() {
   return (
     <section className="py-20 bg-gradient-to-b from-white to-gray-100">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center mb-8">
+          <h2 className="text-3xl font-bold mb-6 text-neutral-darkest">錶友口碑・信心之選</h2>
+        </div>
+        <div className="flex flex-col items-center mb-12">
+          {/* Google Reviews Pill */}
+          <div className="mb-6 inline-flex items-center gap-2 bg-white text-neutral-darker px-4 py-2 rounded-full shadow-md">
+            <Image src="/google-bubble.webp" alt="Google logo" width={24} height={24} />
+            <span className="font-semibold">480+ 5</span>
+            <span className="text-yellow-500 text-xl">⭐</span>
+            <span className="font-semibold">Reviews</span>
+          </div>
+
+          {/* New Cantonese Text */}
+          <p className="text-xl md:text-2xl font-semibold text-center text-gray-800 max-w-2xl">
+            全港唯一累積超過480條<br />Google五星正評的手錶維修專門店
+          </p>
+        </div>
+
+        <p className="text-center text-neutral-dark max-w-xl mx-auto mb-10 text-md">
+          真實體驗，修復後的喜悅與安心。
+        </p>
+
         <div className="flex flex-col items-center">
-          <div className="text-center mb-8">
-            <p className="text-lg font-medium text-transparent bg-clip-text bg-gradient-to-r from-burgundy to-burgundy-light">
-              全球超過500位滿意客戶
-            </p>
-            <h2 className="mt-4 text-3xl font-bold sm:text-4xl text-gray-900">客戶評價</h2>
-          </div>
-
-          <div className="mt-8 text-center md:mt-16 md:order-3">
-            <button
-              onClick={() => setIsModalOpen(true)}
-              className="inline-flex items-center text-transparent bg-clip-text bg-gradient-to-r from-burgundy to-burgundy-light border-b-2 border-burgundy pb-1 font-medium transition-all hover:border-burgundy-light"
-            >
-              查看所有評價
-              <svg
-                className="ml-2 w-4 h-4 text-burgundy"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
-              </svg>
-            </button>
-          </div>
-
-          <div className="relative mt-10 md:mt-16 md:order-2 w-full">
+          <div className="relative w-full">
             {/* Subtle gradient background effect */}
             <div className="absolute -inset-x-1 inset-y-16 md:-inset-x-2 md:-inset-y-6">
               <div
@@ -112,6 +109,10 @@ export default function TestimonialsSection() {
               ))}
             </div>
           </div>
+
+          <p className="mt-12 text-lg font-medium text-center text-transparent bg-clip-text bg-gradient-to-r from-burgundy to-burgundy-light">
+            全球超過30000位滿意客戶
+          </p>
         </div>
       </div>
 

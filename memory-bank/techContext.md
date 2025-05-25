@@ -8,10 +8,10 @@
 *   **Language:** TypeScript (v5)
 *   **Styling:** Tailwind CSS (v3.4.17), CSS Modules (implied by Next.js conventions)
 *   **UI Components:** Radix UI (various components), Shadcn/UI (implied by `components.json` and typical Radix usage for UI)
-*   **Forms:** React Hook Form (v7.54.1) with Zod (v3.24.1) for validation
-*   **Animation:** Framer Motion
+*   **Forms:** React Hook Form (v7.54.1) with Zod (v3.24.1) for validation (Note: No complex forms currently on the landing page)
+*   **Animation:** Framer Motion (Used by some Shadcn components, e.g., `embla-carousel`)
 *   **Icons:** Lucide React
-*   **Linting/Formatting:** ESLint (via `next lint`), Prettier (commonly used with Next.js, though not explicitly listed, good practice)
+*   **Linting/Formatting:** ESLint (via `next lint`), Prettier (commonly used with Next.js, good practice)
 *   **Package Manager:** pnpm (inferred from `pnpm-lock.yaml`)
 
 ## Development Setup
@@ -27,9 +27,23 @@
 
 ## Technical Constraints
 
-*   **Build System:** Relies on Next.js build process.
-*   **ESLint and TypeScript errors are ignored during builds** (`ignoreDuringBuilds: true` in `next.config.mjs` for ESLint, `ignoreBuildErrors: true` for TypeScript). This is a potential risk and should be noted.
-*   **Images are unoptimized** by Next.js Image Optimization (`unoptimized: true` in `next.config.mjs`). This might be for specific deployment reasons or could impact performance.
+### **Performance Requirements (Critical)**
+- **First Contentful Paint (FCP)**: ~1 second target
+- **Largest Contentful Paint (LCP)**: <2.5 seconds (non-negotiable, currently being met)
+- **Mobile-first optimization**: Primary ad traffic source
+- **Bundle size optimization**: Minimal JavaScript for faster loading
+- **Critical path prioritization**: Above-the-fold content must load immediately
+
+### **Configuration Status (Resolved Initial Issues)**
+- **Image optimization ENABLED** (`unoptimized: false` in `next.config.mjs`).
+- **Build errors NOT ignored** (`ignoreDuringBuilds: false` for ESLint, `ignoreBuildErrors: false` for TypeScript in `next.config.mjs`).
+- **Performance monitoring**: Basic checks via browser dev tools; formal tracking to be implemented (Phase 3).
+
+### **Landing Page Constraints**
+- **Single-page focus**: No complex routing or navigation.
+- **Conversion-driven**: Every technical decision must support WhatsApp contact goal.
+- **Ad platform optimization**: Fast loading critical for ad quality scores.
+- **Multi-language support**: Currently Traditional Chinese. English added in one testimonial.
 
 ## Key Dependencies
 
@@ -40,29 +54,29 @@
 
 ### UI & Styling
 *   `tailwindcss`: Utility-first CSS framework
-*   `@radix-ui/*`: Headless UI components (Accordion, Dialog, Dropdown, etc.)
+*   `@radix-ui/*`: Headless UI components (used by Shadcn)
 *   `lucide-react`: Icon library
 *   `class-variance-authority`, `clsx`, `tailwind-merge`: Utilities for styling and class name management
-*   `next-themes`: Theme management (e.g., dark mode)
+*   `next-themes`: Theme management (not actively used for multiple themes, but present)
 *   `tailwindcss-animate`: Tailwind plugin for animations
 
-### Forms & Validation
+### Forms & Validation (Present, but not heavily used on current page)
 *   `react-hook-form`: Form handling
-*   `@hookform/resolvers`: Resolver for `react-hook-form` (likely for Zod)
+*   `@hookform/resolvers`: Resolver for `react-hook-form`
 *   `zod`: Schema validation
 
 ### Utilities & Others
 *   `date-fns`: Date utility library
-*   `embla-carousel-react`: Carousel component
-*   `framer-motion`: Animation library
-*   `input-otp`: One-time password input component
-*   `react-compare-slider`: Component for comparing two images/elements
-*   `react-day-picker`: Date picker component
-*   `react-icons`: Icon library (alternative or supplementary to Lucide)
-*   `react-resizable-panels`: Resizable panel components
-*   `recharts`: Charting library
-*   `sonner`: Toast notification library
-*   `vaul`: Drawer component
+*   `embla-carousel-react`: Used by `BrandCarousel`.
+*   `framer-motion`: Animation library (dependency of some UI components)
+*   `input-otp`: (Not currently used)
+*   `react-compare-slider`: Component for comparing two images/elements. 
+*   `react-day-picker`: (Not currently used)
+*   `react-icons`: Icon library (specifically `FaWhatsapp`, `IoClose` in `WhatsappChatWidget`).
+*   `react-resizable-panels`: (Not currently used)
+*   `recharts`: (Not currently used)
+*   `sonner`: (Not currently used)
+*   `vaul`: (Not currently used)
 
 ### Dev Dependencies
 *   `@types/node`, `@types/react`, `@types/react-dom`: TypeScript definitions
@@ -71,8 +85,8 @@
 
 ## Tool Usage Patterns
 
-*   **Component Structure:** Likely follows Shadcn/UI conventions given `components.json` and the use of Radix UI. Components are probably in `components/ui` and `components/` general.
-*   **Styling:** Primarily Tailwind CSS, with custom themes and colors defined in `tailwind.config.ts`. `hsl` color variables are used, indicating a themable setup.
-*   **State Management:** Likely React Context API for global state (e.g., themes via `next-themes`) and component-level state. More complex state management isn't immediately apparent.
-*   **Routing:** Next.js App Router (inferred from `app/` directory and modern Next.js versions).
+*   **Component Structure:** Shadcn/UI conventions are followed (`components/ui`, `components/`).
+*   **Styling:** Primarily Tailwind CSS, with custom themes and colors defined in `tailwind.config.ts`.
+*   **State Management:** React Context API for global state (e.g., `WhatsappChatWidget` internal state) and component-level state.
+*   **Routing:** Next.js App Router (`app/` directory).
 *   **Path Aliases:** `@/*` is configured in `tsconfig.json` to point to the project root (`./*`). 

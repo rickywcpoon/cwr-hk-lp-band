@@ -10,6 +10,10 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        inter: ['var(--font-inter)', 'sans-serif'],
+        playfair: ['var(--font-playfair)', 'serif'],
+      },
       colors: {
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
@@ -61,10 +65,41 @@ const config: Config = {
           border: "hsl(var(--sidebar-border))",
           ring: "hsl(var(--sidebar-ring))",
         },
+        // Casal (Teal) Primary Palette
+        casal: {
+          lightest: "#E9EEEE",
+          lighter: "#D3DEDD",
+          light: "#678E8A",
+          DEFAULT: "#275E59",
+          dark: "#1F4B47",
+          darker: "#0F2523",
+          darkest: "#0B1C1A",
+        },
+        // Cocoa-Bean (Burgundy) Secondary Palette
+        "cocoa-bean": {
+          lightest: "#EEE9E9",
+          lighter: "#DED3D3",
+          light: "#8E6565",
+          DEFAULT: "#5E2424",
+          dark: "#4B1C1C",
+          darker: "#250E0E",
+          darkest: "#1C0A0A",
+        },
+        // Neutral Palette
+        neutral: {
+          lightest: "#F2F2F2",
+          lighter: "#D8D8D8",
+          light: "#B2B2B2",
+          DEFAULT: "#7F7F7F",
+          dark: "#4C4C4C",
+          darker: "#191919",
+          darkest: "#000000",
+        },
+        // Legacy burgundy colors for backward compatibility (mapped to cocoa-bean)
         burgundy: {
-          light: "#A55567",
-          DEFAULT: "#722F37",
-          dark: "#5A1F28",
+          light: "#8E6565",
+          DEFAULT: "#5E2424",
+          dark: "#4B1C1C",
         },
       },
       backgroundImage: {
@@ -93,10 +128,15 @@ const config: Config = {
             height: "0",
           },
         },
+        "loop-horizontally": {
+          from: { transform: "translateX(0%)" },
+          to: { transform: "translateX(-50%)" },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
+        "loop-horizontally": "loop-horizontally 30s linear infinite",
       },
     },
   },

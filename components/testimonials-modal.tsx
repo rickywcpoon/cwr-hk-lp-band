@@ -3,6 +3,7 @@
 import { useEffect, useRef } from "react"
 import { X } from "lucide-react"
 import Image from "next/image"
+import { DialogFooter, DialogClose } from "@/components/ui/dialog"
 
 interface TestimonialsModalProps {
   isOpen: boolean
@@ -68,12 +69,16 @@ export default function TestimonialsModal({ isOpen, onClose }: TestimonialsModal
 
           <div className="mt-8 text-center">
             <p className="text-gray-600">加入我們的滿意客戶行列，體驗我們的優質手錶錶帶修復服務。</p>
-            <button
-              onClick={onClose}
-              className="mt-4 bg-gradient-to-r from-burgundy to-burgundy-light hover:from-burgundy-light hover:to-burgundy text-white font-medium px-6 py-2 rounded-md inline-flex items-center justify-center transition-colors duration-300"
-            >
-              關閉評價
-            </button>
+            <DialogFooter className="mt-6 sm:mt-8">
+              <DialogClose asChild>
+                <button
+                  type="button"
+                  className="mt-4 bg-neutral-lightest text-neutral-darker hover:bg-neutral-light border-2 border-neutral-darker font-medium px-6 py-2 rounded-md inline-flex items-center justify-center transition-colors duration-300 w-full sm:w-auto"
+                >
+                  關閉評價
+                </button>
+              </DialogClose>
+            </DialogFooter>
           </div>
         </div>
       </div>
