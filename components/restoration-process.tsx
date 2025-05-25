@@ -11,7 +11,6 @@ const restorationSteps = [
     title: "結構加固",
     titleChinese: "增強結構，更換每一格的內柱芯",
     description: "我們通過更換每個鏈節中的內部柱芯來加強結構，確保錶帶恢復原有的穩定性和耐用性。",
-    descriptionChinese: "我們通過更換每個鏈節中的內部柱芯來加強結構，確保錶帶恢復原有的穩定性和耐用性。",
     image: "/process/step-1.webp",
   },
   {
@@ -19,7 +18,6 @@ const restorationSteps = [
     title: "錶帶緊固",
     titleChinese: "拉緊錶帶，還原近乎全新狀態",
     description: "我們精心拉緊手錶帶，使其恢復到接近全新的狀態，消除鬆動並恢復適當的貼合感和手感。",
-    descriptionChinese: "我們精心拉緊手錶帶，使其恢復到接近全新的狀態，消除鬆動並恢復適當的貼合感和手感。",
     image: "/process/step-2.webp",
   },
   {
@@ -27,7 +25,6 @@ const restorationSteps = [
     title: "精密激光修復",
     titleChinese: "鋼或18K金雷射修補崩，重新塑造外型",
     description: "使用先進的激光焊接技術，我們修復鋼或18K金錶帶上的損壞區域，精確地將外觀重塑為原始形態。",
-    descriptionChinese: "使用先進的激光焊接技術，我們修復鋼或18K金錶帶上的損壞區域，精確地將外觀重塑為原始形態。",
     image: "/process/step-3.webp",
   },
   {
@@ -35,7 +32,6 @@ const restorationSteps = [
     title: "刮痕去除與拋光",
     titleChinese: "去除花痕，還原原廠打磨及拋光",
     description: "我們精細地去除刮痕並恢復原廠的拋光處理，使錶帶恢復原有的光澤和亮度。",
-    descriptionChinese: "我們精細地去除刮痕並恢復原廠的拋光處理，使錶帶恢復原有的光澤和亮度。",
     image: "/process/step-4.webp",
   },
 ]
@@ -135,7 +131,6 @@ export default function RestorationProcess() {
           <h3 className="text-2xl font-bold mb-2 text-gray-900">{currentStep.title}</h3>
           <p className="text-burgundy mb-6">{currentStep.titleChinese}</p>
           <p className="text-gray-700 mb-6">{currentStep.description}</p>
-          <p className="text-gray-500 text-sm">{currentStep.descriptionChinese}</p>
 
           {/* Progress Bar */}
           <div className="mt-8">

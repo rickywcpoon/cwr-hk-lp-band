@@ -31,12 +31,15 @@ export const metadata: Metadata = {
     description: '20年經驗，激光焊接技術，修復各大名錶錶帶。重拾原廠氣派，經典再現。',
     locale: 'zh_HK',
     type: 'website',
+    url: 'https://main.d3lpkejux2a402.amplifyapp.com',
+    siteName: 'Classic Watch Repair HK',
     images: [
       {
-        url: '/cwr-logo.png',
+        url: 'https://main.d3lpkejux2a402.amplifyapp.com/cwr-logo.png',
         width: 288,
         height: 77,
         alt: 'Classic Watch Repair Logo',
+        type: 'image/png',
       },
     ],
   },
@@ -51,6 +54,10 @@ export default function RootLayout({
     <html lang="zh-HK" className={`${inter.variable} ${playfair.variable}`}>
       <head>
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+        <meta property="og:image" content="https://main.d3lpkejux2a402.amplifyapp.com/cwr-logo.png" />
+        <meta property="og:image:width" content="288" />
+        <meta property="og:image:height" content="77" />
+        <meta property="og:image:type" content="image/png" />
         <link rel="preload" href="/images/hero.webp" as="image" />
         <link rel="preconnect" href="https://wa.me" />
       </head>
