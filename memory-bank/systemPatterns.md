@@ -45,11 +45,24 @@
 - **Trust Signals**: Credibility elements (experience, testimonials, expertise) integrated throughout
 - **Friction Reduction**: Minimal steps between landing and contact
 
+### **Personal Branding Patterns**
+- **Hero Card Treatment**: Enhanced grid layout with portrait integration for key personnel
+- **Circular Portrait Design**: Professional presentation with brand color borders and gradient overlays
+- **Asymmetric Grid Layouts**: 3-column standard + 1 hero card for visual hierarchy
+- **Human Connection Elements**: Personal photos and stories to build trust and credibility
+
+### **Mobile Optimization Patterns**
+- **Three-Line Headlines**: Strategic line breaks for consistent mobile display across screen sizes
+- **Responsive Portrait Integration**: Side-by-side desktop, stacked mobile layouts
+- **Touch-Friendly Interactions**: Swipe functionality for mobile navigation components
+- **Mobile-First Typography**: Scalable text sizing (text-3xl → sm:text-6xl → lg:text-8xl)
+
 ### **Technical Patterns**
 - **Static Site Generation (Next.js)**: For optimal loading performance
 - **Component Composition (React)**: Reusable UI elements
 - **Utility-First CSS (Tailwind)**: Rapid styling with performance considerations
 - **Headless Components (Radix UI)**: Used selectively via Shadcn/UI components
+- **Metadata-Driven Assets**: Next.js 13+ approach for favicons and OpenGraph images
 
 ## Component Relationships (Current Structure)
 
@@ -57,17 +70,19 @@
 app/page.tsx (SSG)
 ├── components/hero-section.tsx (Critical Path)
 │   ├── Header (part of Hero)
-│   ├── Headline, Value Proposition, Subtitles
+│   ├── Headline (Three-line mobile display), Value Proposition, Subtitles
 │   └── Primary CTA (WhatsApp)
 ├── components/loose-vs-right-fit.tsx
-├── components/restoration-process.tsx
+├── components/restoration-process.tsx (with mobile swipe functionality)
 ├── "Why Choose Us" Section (in app/page.tsx)
+│   ├── 3-Column Standard Grid (Shield, Tool, Award icons)
+│   └── Michael Young Hero Card (Portrait + Enhanced Content)
 ├── components/image-compare-slider.tsx (Before/After Gallery)
-├── components/brand-carousel.tsx (Brand Expertise)
+├── components/brand-carousel.tsx (Brand Expertise, edge-to-edge)
 ├── Pricing Section (in app/page.tsx)
 ├── components/testimonials-section.tsx (Trust & Credibility)
 ├── Final CTA Section (in app/page.tsx)
-└── components/WhatsappChatWidget.tsx (Sticky)
+└── components/WhatsappChatWidget.tsx (Sticky, updated logo)
 ```
 
 ## Critical Implementation Paths

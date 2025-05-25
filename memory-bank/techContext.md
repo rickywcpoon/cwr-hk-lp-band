@@ -38,12 +38,17 @@
 - **Image optimization ENABLED** (`unoptimized: false` in `next.config.mjs`).
 - **Build errors NOT ignored** (`ignoreDuringBuilds: false` for ESLint, `ignoreBuildErrors: false` for TypeScript in `next.config.mjs`).
 - **Performance monitoring**: Basic checks via browser dev tools; formal tracking to be implemented (Phase 3).
+- **Favicon implementation**: Next.js 13+ metadata.icons approach implemented for proper browser tab display.
+- **OpenGraph optimization**: Social media sharing metadata configured with CWR logo and bilingual content.
+- **SEO enhancement**: Comprehensive Chinese metadata with keywords and proper locale settings.
 
 ### **Landing Page Constraints**
 - **Single-page focus**: No complex routing or navigation.
 - **Conversion-driven**: Every technical decision must support WhatsApp contact goal.
 - **Ad platform optimization**: Fast loading critical for ad quality scores.
-- **Multi-language support**: Currently Traditional Chinese. English added in one testimonial.
+- **Multi-language support**: Currently Traditional Chinese primary with English brand elements.
+- **Social media optimization**: WhatsApp link sharing optimized with proper OpenGraph metadata.
+- **Mobile-first responsive design**: Three-line headlines, touch-friendly interactions, scalable typography.
 
 ## Key Dependencies
 
@@ -89,4 +94,4 @@
 *   **Styling:** Primarily Tailwind CSS, with custom themes and colors defined in `tailwind.config.ts`.
 *   **State Management:** React Context API for global state (e.g., `WhatsappChatWidget` internal state) and component-level state.
 *   **Routing:** Next.js App Router (`app/` directory).
-*   **Path Aliases:** `@/*` is configured in `tsconfig.json` to point to the project root (`./*`). 
+*   **Path Aliases:** `@/*` is configured in `tsconfig.json` to point to the project root (`./*`).
