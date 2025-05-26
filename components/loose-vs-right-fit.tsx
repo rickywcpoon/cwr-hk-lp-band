@@ -13,13 +13,16 @@ export default function LooseVsRightFit({ whatsappLink }: LooseVsRightFitProps) 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           {/* Image - Left on desktop, Top on mobile */}
           <div className="order-1 lg:order-1">
-            <div className="relative overflow-hidden shadow-2xl">
+            <div className="relative overflow-hidden shadow-2xl bg-gray-200">
+              {/* Grey placeholder background with pulse animation */}
+              <div className="absolute inset-0 bg-gradient-to-br from-gray-200 to-gray-300 animate-pulse transition-opacity duration-300"></div>
+              
               <Image
                 src="/loose-vs-good-fitting.webp"
                 alt="鬆弛錶帶對比緊密貼合錶帶"
                 width={600}
                 height={400}
-                className="w-full h-auto object-cover"
+                className="w-full h-auto object-cover relative z-10"
                 loading="eager"
                 sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 600px"
                 quality={85}
@@ -27,6 +30,13 @@ export default function LooseVsRightFit({ whatsappLink }: LooseVsRightFitProps) 
                 blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWGRkqGx0f/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaH9bcfaSXWGaRmknyJckliyjqTzSlT54b6bk+h0R//2Q=="
                 fetchPriority="high"
                 priority
+                onLoad={(e) => {
+                  // Hide placeholder when image loads
+                  const placeholder = e.currentTarget.parentElement?.querySelector('.animate-pulse');
+                  if (placeholder) {
+                    placeholder.classList.add('opacity-0');
+                  }
+                }}
               />
             </div>
           </div>
