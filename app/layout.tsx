@@ -72,6 +72,9 @@ export default function RootLayout({
         {/* Secondary critical resources - logo for header */}
         <link rel="preload" href="/cwr-logo.png" as="image" type="image/png" fetchPriority="high" />
         
+        {/* Third priority: Loose vs right fit section image */}
+        <link rel="preload" href="/loose-vs-good-fitting.webp" as="image" type="image/webp" fetchPriority="high" />
+        
         {/* Critical CSS for above-the-fold content */}
         <style dangerouslySetInnerHTML={{
           __html: `
@@ -97,7 +100,7 @@ export default function RootLayout({
         <link rel="prefetch" href="/michael-young.webp" />
         <link rel="prefetch" href="/cwr-whatsapp-logo.webp" />
         
-        {/* Preload restoration process step images for instant navigation */}
+        {/* Prefetch restoration process step images for instant navigation */}
         <link rel="prefetch" href="/process/step-1.webp" />
         <link rel="prefetch" href="/process/step-2.webp" />
         <link rel="prefetch" href="/process/step-3.webp" />
