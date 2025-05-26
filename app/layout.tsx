@@ -96,6 +96,12 @@ export default function RootLayout({
         {/* Prefetch below-the-fold resources (lower priority) */}
         <link rel="prefetch" href="/michael-young.webp" />
         <link rel="prefetch" href="/cwr-whatsapp-logo.webp" />
+        
+        {/* Preload restoration process step images for instant navigation */}
+        <link rel="prefetch" href="/process/step-1.webp" />
+        <link rel="prefetch" href="/process/step-2.webp" />
+        <link rel="prefetch" href="/process/step-3.webp" />
+        <link rel="prefetch" href="/process/step-4.webp" />
       </head>
       <body className="font-inter">
         {/* Google Tag Manager */}

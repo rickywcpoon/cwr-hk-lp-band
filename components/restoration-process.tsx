@@ -39,6 +39,31 @@ export default function RestorationProcess() {
   const [activeStep, setActiveStep] = useState(0)
   const [touchStart, setTouchStart] = useState<number | null>(null)
   const [touchEnd, setTouchEnd] = useState<number | null>(null)
+  const [imagesPreloaded, setImagesPreloaded] = useState(false)
+
+  // Preload all step images when component mounts
+  useEffect(() => {
+    const preloadImages = async () => {
+      const imagePromises = restorationSteps.map((step) => {
+        return new Promise((resolve, reject) => {
+          const img = new window.Image()
+          img.onload = resolve
+          img.onerror = reject
+          img.src = step.image
+        })
+      })
+
+      try {
+        await Promise.all(imagePromises)
+        setImagesPreloaded(true)
+      } catch (error) {
+        console.warn('Some process step images failed to preload:', error)
+        setImagesPreloaded(true) // Continue anyway
+      }
+    }
+
+    preloadImages()
+  }, [])
 
   const nextStep = () => {
     setActiveStep((prev) => (prev === restorationSteps.length - 1 ? 0 : prev + 1))
@@ -90,14 +115,32 @@ export default function RestorationProcess() {
           {restorationSteps.map((step, index) => (
             <button
               key={step.id}
-              onClick={() => setActiveStep(index)}
+              onClick={() => imagesPreloaded && setActiveStep(index)}
               className={`w-3 h-3 rounded-full transition-all duration-300 ${
                 activeStep === index ? "bg-burgundy w-6" : "bg-gray-300"
-              }`}
+              } ${!imagesPreloaded ? "opacity-50 cursor-not-allowed" : "cursor-pointer"}`}
               aria-label={`前往步驟 ${index + 1}`}
+              disabled={!imagesPreloaded}
             />
           ))}
         </div>
+      </div>
+
+      {/* Hidden preload images for instant switching */}
+      <div className="hidden">
+        {restorationSteps.map((step, index) => (
+          index !== activeStep && (
+            <Image
+              key={`preload-${step.id}`}
+              src={step.image}
+              alt={`Preload ${step.title}`}
+              width={1}
+              height={1}
+              loading="eager"
+              quality={75}
+            />
+          )
+        ))}
       </div>
 
       {/* Combined Content Card - Image and Text in one visual group */}
@@ -128,24 +171,40 @@ export default function RestorationProcess() {
               fill
               className="object-cover"
               sizes="(max-width: 768px) 100vw, 1200px"
-              loading="lazy"
-              quality={80}
+              loading={activeStep === 0 ? "eager" : "lazy"}
+              quality={75}
+              priority={activeStep === 0}
+              fetchPriority={activeStep === 0 ? "high" : "low"}
             />
           </div>
+
+          {/* Loading indicator for image preloading */}
+          {!imagesPreloaded && (
+            <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-20">
+              <div className="bg-white/90 rounded-lg p-3 shadow-lg">
+                <div className="flex items-center space-x-2">
+                  <div className="animate-spin rounded-full h-4 w-4 border-2 border-burgundy border-t-transparent"></div>
+                  <span className="text-sm text-gray-700">載入中...</span>
+                </div>
+              </div>
+            </div>
+          )}
 
           {/* Navigation Buttons */}
           <div className="absolute inset-0 flex items-center justify-between px-4">
             <button
               onClick={prevStep}
-              className="bg-white/70 hover:bg-white text-gray-800 p-2 rounded-full transition-colors shadow-sm"
+              className="bg-white/70 hover:bg-white text-gray-800 p-2 rounded-full transition-colors shadow-sm disabled:opacity-50"
               aria-label="上一步"
+              disabled={!imagesPreloaded}
             >
               <ChevronLeft className="h-6 w-6" />
             </button>
             <button
               onClick={nextStep}
-              className="bg-white/70 hover:bg-white text-gray-800 p-2 rounded-full transition-colors shadow-sm"
+              className="bg-white/70 hover:bg-white text-gray-800 p-2 rounded-full transition-colors shadow-sm disabled:opacity-50"
               aria-label="下一步"
+              disabled={!imagesPreloaded}
             >
               <ChevronRight className="h-6 w-6" />
             </button>
