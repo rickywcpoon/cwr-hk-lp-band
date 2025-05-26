@@ -34,7 +34,7 @@ export function ServiceBrands() {
                 alt={logo.alt}
                 width={logoWidth} // Use the defined width variable
                 height={60} // Keep a fixed height or adjust based on design needs
-                className="h-auto" // Let height adjust automatically based on width and aspect ratio
+                className="brand-logo h-auto" // Let height adjust automatically based on width and aspect ratio
                 style={{ objectFit: "contain", width: `${logoWidth}px` }} // Ensure width is applied and aspect ratio is maintained
                 unoptimized
               />

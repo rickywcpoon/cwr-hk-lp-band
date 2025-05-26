@@ -10,14 +10,20 @@ interface HeroSectionProps {
 
 export default function HeroSection({ whatsappLink }: HeroSectionProps) {
   const [isScrolled, setIsScrolled] = useState(false)
+  const [parallaxOffset, setParallaxOffset] = useState(0)
 
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 10) {
+      const scrollY = window.scrollY
+      
+      if (scrollY > 10) {
         setIsScrolled(true)
       } else {
         setIsScrolled(false)
       }
+
+      // Subtle parallax effect - move background slower than scroll
+      setParallaxOffset(scrollY * 0.3)
     }
 
     window.addEventListener("scroll", handleScroll)
@@ -55,9 +61,10 @@ export default function HeroSection({ whatsappLink }: HeroSectionProps) {
 
       {/* Background Image with Gradient Overlay */}
       <div 
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat parallax-slow"
         style={{
           backgroundImage: 'url(/hero-band-restoration.webp)',
+          transform: `translateY(${parallaxOffset}px)`,
         }}
       >
         <div className="absolute inset-0" style={{
@@ -70,24 +77,36 @@ export default function HeroSection({ whatsappLink }: HeroSectionProps) {
         <div className="px-6 mx-auto sm:px-8 lg:px-12 max-w-7xl">
           <div className="w-[60%]">
             <h1 className="font-sans font-normal text-3xl sm:text-6xl lg:text-8xl tracking-tighter text-neutral-lighter">
-              手錶錶帶失色？<br />
-              <span className="font-serif italic font-bold text-transparent bg-clip-text bg-gradient-to-r from-casal-lighter via-casal-light to-casal-lighter">
+              <span className="hero-text-reveal hero-text-reveal-1 block">手錶錶帶失色？</span>
+              <span className="hero-text-reveal hero-text-reveal-2 font-serif italic font-bold text-transparent bg-clip-text bg-gradient-to-r from-casal-lighter via-casal-light to-casal-lighter gradient-text-animate block">
                 重拾原廠氣派，<br />
                 經典再現。
               </span>
             </h1>
-            <p className="mt-6 font-sans text-base font-normal leading-7 text-neutral-lightest sm:text-lg sm:leading-8">
+            <p className="hero-text-reveal hero-text-reveal-3 mt-6 font-sans text-base font-normal leading-7 text-neutral-lightest sm:text-lg sm:leading-8">
               「鬆、花、崩凹」不再。專業修復，延續手錶不凡價值。
             </p>
-            <p className="mt-8 font-sans text-xs font-normal leading-5 text-neutral-lightest text-opacity-90 sm:text-sm">
+            <p className="hero-text-reveal hero-text-reveal-4 mt-8 font-sans text-xs font-normal leading-5 text-neutral-lightest text-opacity-90 sm:text-sm">
               專為頂級名錶而設・尊重原裝・激光焊接・精密打磨
             </p>
             
 
-            <div className="flex flex-col sm:flex-row items-start mt-10 space-y-4 sm:space-y-0 sm:space-x-4">
+            <div className="hero-text-reveal hero-text-reveal-4 flex flex-col sm:flex-row items-start mt-10 space-y-4 sm:space-y-0 sm:space-x-4">
               <Link
                 href={whatsappLink}
-                className="w-full sm:w-auto inline-flex items-center justify-center px-5 py-3 font-sans text-base font-semibold transition-all duration-200 rounded-md sm:leading-8 bg-neutral-lightest text-neutral-darker hover:bg-neutral-light border-2 border-neutral-darker focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-casal focus:ring-offset-casal-darker"
+                id="cta-hero-whatsapp"
+                className="btn-pulse w-full sm:w-auto inline-flex items-center justify-center px-5 py-3 font-sans text-base font-semibold transition-all duration-200 rounded-md sm:leading-8 bg-neutral-lightest text-neutral-darker hover:bg-neutral-light border-2 border-neutral-darker focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-casal focus:ring-offset-casal-darker"
+                onClick={() => {
+                  if (typeof window !== 'undefined' && (window as any).dataLayer) {
+                    ;(window as any).dataLayer.push({
+                      event: 'whatsapp_click',
+                      click_source: 'hero_section',
+                      click_element_id: 'cta-hero-whatsapp',
+                      page_location: window.location.href,
+                      conversion_action: 'whatsapp_contact',
+                    })
+                  }
+                }}
               >
                 立即WhatsApp諮詢
               </Link>

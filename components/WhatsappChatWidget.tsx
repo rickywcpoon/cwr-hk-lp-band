@@ -89,6 +89,16 @@ const WhatsappChatWidget = () => {
   }
 
   const handleChatNow = () => {
+    // Track GTM click event
+    if (typeof window !== 'undefined' && (window as any).dataLayer) {
+      ;(window as any).dataLayer.push({
+        event: 'whatsapp_click',
+        click_source: 'widget_chat_now',
+        click_element_id: 'cta-widget-chat-now',
+        page_location: window.location.href,
+        conversion_action: 'whatsapp_contact',
+      })
+    }
     window.open(whatsappUrl, "_blank")
     closeWidget()
   }
@@ -119,7 +129,7 @@ const WhatsappChatWidget = () => {
           <div className="flex flex-shrink-0 items-center justify-between bg-gray-900 p-4 text-white">
             <div className="flex items-center gap-3">
               {/* Logo */}
-              <Image src="/cwr-whatsapp-logo.webp" alt="CWR Logo" width={40} height={40} className="rounded-full" />
+              <Image src="/cwr-whatsapp-logo.webp" alt="CWR Logo" width={40} height={40} className="rounded-full" loading="lazy" />
               <div>
                 <div className="font-semibold">Barry@CWR</div>
                 <div className="text-xs text-gray-200">Typically replies within a day</div>

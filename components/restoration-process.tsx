@@ -1,8 +1,7 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import Image from "next/image"
-import { motion } from "framer-motion"
 import { ChevronRight, ChevronLeft } from "lucide-react"
 
 const restorationSteps = [
@@ -38,6 +37,8 @@ const restorationSteps = [
 
 export default function RestorationProcess() {
   const [activeStep, setActiveStep] = useState(0)
+  const [touchStart, setTouchStart] = useState<number | null>(null)
+  const [touchEnd, setTouchEnd] = useState<number | null>(null)
 
   const nextStep = () => {
     setActiveStep((prev) => (prev === restorationSteps.length - 1 ? 0 : prev + 1))
@@ -47,11 +48,35 @@ export default function RestorationProcess() {
     setActiveStep((prev) => (prev === 0 ? restorationSteps.length - 1 : prev - 1))
   }
 
+  // Handle touch events for swipe navigation
+  const handleTouchStart = (e: React.TouchEvent) => {
+    setTouchEnd(null)
+    setTouchStart(e.targetTouches[0].clientX)
+  }
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    setTouchEnd(e.targetTouches[0].clientX)
+  }
+
+  const handleTouchEnd = () => {
+    if (!touchStart || !touchEnd) return
+    
+    const distance = touchStart - touchEnd
+    const isLeftSwipe = distance > 50
+    const isRightSwipe = distance < -50
+
+    if (isLeftSwipe) {
+      nextStep()
+    } else if (isRightSwipe) {
+      prevStep()
+    }
+  }
+
   const currentStep = restorationSteps[activeStep]
 
   return (
     <div className="w-full max-w-6xl mx-auto">
-      <div className="text-center mb-12">
+      <div className="text-center mb-12 animate-on-scroll">
         <h2 className="text-3xl font-bold mb-2 text-gray-900">我們的精細修復過程</h2>
         <p className="text-xl text-gray-500 mb-2">金屬錶帶修復過程</p>
         <p className="text-gray-600 max-w-3xl mx-auto">
@@ -76,20 +101,26 @@ export default function RestorationProcess() {
       </div>
 
       {/* Combined Content Card - Image and Text in one visual group */}
-      <div className="bg-white rounded-lg shadow-lg border border-gray-200 overflow-hidden">
+      <div className="bg-white rounded-lg shadow-lg border border-gray-200 overflow-hidden scale-in card-hover-glow">
         {/* Image Section with 3:2 aspect ratio */}
-        <div className="relative w-full" style={{ aspectRatio: "3/2" }}>
+        <div 
+          className="relative w-full" 
+          style={{ aspectRatio: "3/2" }}
+          onTouchStart={handleTouchStart}
+          onTouchMove={handleTouchMove}
+          onTouchEnd={handleTouchEnd}
+        >
           <div className="absolute top-4 left-4 z-10 bg-burgundy text-white font-bold px-4 py-2 rounded-md">
             步驟 {activeStep + 1}/{restorationSteps.length}
           </div>
 
-          <motion.div
+          <div
             key={currentStep.id}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.5 }}
-            className="absolute inset-0"
+            className="absolute inset-0 process-step"
+            style={{ 
+              opacity: 1,
+              transition: 'all 0.5s ease-in-out'
+            }}
           >
             <Image
               src={currentStep.image || "/placeholder.svg"}
@@ -97,8 +128,10 @@ export default function RestorationProcess() {
               fill
               className="object-cover"
               sizes="(max-width: 768px) 100vw, 1200px"
+              loading="lazy"
+              quality={80}
             />
-          </motion.div>
+          </div>
 
           {/* Navigation Buttons */}
           <div className="absolute inset-0 flex items-center justify-between px-4">
@@ -120,13 +153,14 @@ export default function RestorationProcess() {
         </div>
 
         {/* Text Section */}
-        <motion.div
+        <div
           key={currentStep.id}
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: -20 }}
-          transition={{ duration: 0.5 }}
           className="p-8"
+          style={{
+            opacity: 1,
+            transform: 'translateY(0)',
+            transition: 'all 0.5s ease-in-out'
+          }}
         >
           <h3 className="text-2xl font-bold mb-2 text-gray-900">{currentStep.title}</h3>
           <p className="text-burgundy mb-6">{currentStep.titleChinese}</p>
@@ -141,7 +175,7 @@ export default function RestorationProcess() {
               ></div>
             </div>
           </div>
-        </motion.div>
+        </div>
       </div>
     </div>
   )

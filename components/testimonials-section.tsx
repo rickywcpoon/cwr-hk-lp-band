@@ -45,7 +45,7 @@ export default function TestimonialsSection() {
         <div className="flex flex-col items-center mb-12">
           {/* Google Reviews Pill */}
           <div className="mb-6 inline-flex items-center gap-2 bg-white text-neutral-darker px-4 py-2 rounded-full shadow-md">
-            <Image src="/google-bubble.webp" alt="Google logo" width={24} height={24} />
+            <Image src="/google-bubble.webp" alt="Google logo" width={24} height={24} loading="lazy" />
             <span className="font-semibold">480+ 5</span>
             <span className="text-yellow-500 text-xl">⭐</span>
             <span className="font-semibold">Reviews</span>
@@ -75,9 +75,9 @@ export default function TestimonialsSection() {
             </div>
 
             <div className="relative grid grid-cols-1 gap-6 mx-auto md:grid-cols-3 lg:gap-10">
-              {testimonials.map((testimonial) => (
-                <div key={testimonial.id} className="flex flex-col overflow-hidden shadow-md group">
-                  <div className="flex flex-col justify-between flex-1 p-6 bg-gradient-to-br from-white to-gray-50 lg:py-8 lg:px-7 rounded-lg border border-gray-200 transition-all duration-300 group-hover:shadow-lg">
+              {testimonials.map((testimonial, index) => (
+                <div key={testimonial.id} className="flex flex-col overflow-hidden shadow-md group animate-on-scroll" style={{ animationDelay: `${index * 0.2}s` }}>
+                  <div className="testimonial-card flex flex-col justify-between flex-1 p-6 bg-gradient-to-br from-white to-gray-50 lg:py-8 lg:px-7 rounded-lg border border-gray-200 transition-all duration-300 group-hover:shadow-lg">
                     <div className="flex-1">
                       <div className="flex items-center">
                         {[...Array(testimonial.rating)].map((_, i) => (
@@ -97,6 +97,8 @@ export default function TestimonialsSection() {
                           alt={testimonial.name}
                           fill
                           className="object-cover"
+                          loading="lazy"
+                          sizes="44px"
                         />
                       </div>
                       <div className="ml-4">
