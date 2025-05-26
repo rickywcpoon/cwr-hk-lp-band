@@ -8,12 +8,16 @@ const inter = Inter({
   subsets: ['latin'],
   display: 'swap',
   variable: '--font-inter',
+  preload: true,
+  fallback: ['system-ui', 'arial'],
 })
 
 const playfair = Playfair_Display({
   subsets: ['latin'],
   display: 'swap',
   variable: '--font-playfair',
+  preload: true,
+  fallback: ['serif'],
 })
 
 export const metadata: Metadata = {
@@ -59,10 +63,34 @@ export default function RootLayout({
         <meta property="og:image:width" content="288" />
         <meta property="og:image:height" content="77" />
         <meta property="og:image:type" content="image/png" />
-        <link rel="preload" href="/hero-band-restoration.webp" as="image" type="image/webp" />
-        <link rel="preconnect" href="https://wa.me" />
+        {/* Critical resource preloading for LCP optimization */}
+        <link rel="preload" href="/hero-band-restoration.webp" as="image" type="image/webp" fetchPriority="high" />
+        <link rel="preload" href="/cwr-logo.png" as="image" type="image/png" fetchPriority="high" />
+        
+        {/* Critical CSS for above-the-fold content */}
+        <style dangerouslySetInnerHTML={{
+          __html: `
+            /* Critical CSS for hero section */
+            .hero-text-reveal { opacity: 0; transform: translateY(20px); }
+            .hero-text-reveal.animate { opacity: 1; transform: translateY(0); transition: all 0.8s ease-out; }
+            .gradient-text-animate { background-size: 200% 200%; animation: gradient 3s ease infinite; }
+            @keyframes gradient { 0%,100% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } }
+            .parallax-slow { will-change: transform; }
+            .btn-pulse { animation: pulse 2s infinite; }
+            @keyframes pulse { 0%,100% { transform: scale(1); } 50% { transform: scale(1.02); } }
+          `
+        }} />
+        
+        {/* External connections - optimized for performance */}
+        <link rel="preconnect" href="https://fonts.googleapis.com" crossOrigin="" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
         <link rel="preconnect" href="https://www.googletagmanager.com" />
-        <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
+        <link rel="preconnect" href="https://wa.me" />
+        <link rel="dns-prefetch" href="https://connect.facebook.net" />
+        
+        {/* Prefetch critical resources */}
+        <link rel="prefetch" href="/loose-vs-good-fitting.webp" />
+        <link rel="prefetch" href="/michael-young.webp" />
       </head>
       <body className="font-inter">
         {/* Google Tag Manager */}
