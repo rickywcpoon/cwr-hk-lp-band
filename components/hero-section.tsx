@@ -101,7 +101,7 @@ export default function HeroSection({ whatsappLink }: HeroSectionProps) {
       <div className="relative">
         <div className="px-6 mx-auto sm:px-8 lg:px-12 max-w-7xl">
           <div className="w-[60%]">
-            <h1 className="font-sans font-normal text-3xl sm:text-6xl lg:text-8xl tracking-tighter text-neutral-lighter">
+            <h1 className="font-sans font-normal text-5xl sm:text-6xl lg:text-8xl tracking-tighter text-neutral-lighter">
               {/* Line 1: Always on its own line */}
               <span className="block">
                 讓錶帶重拾
