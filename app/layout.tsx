@@ -58,8 +58,10 @@ export default function RootLayout({
   return (
     <html lang="zh-HK" className={`${inter.variable} ${playfair.variable}`}>
       <head>
-        {/* CRITICAL: Hero background image MUST load first - LCP optimization */}
-        <link rel="preload" href="/hero-band-restoration.webp" as="image" type="image/webp" fetchPriority="high" />
+        {/* ABSOLUTE PRIORITY: Hero background image - MUST load before anything else */}
+        <link rel="dns-prefetch" href="/_next/image" />
+        <link rel="preconnect" href="/_next/image" crossOrigin="" />
+        <link rel="preload" href="/hero-band-restoration.webp" as="image" type="image/webp" fetchPriority="high" crossOrigin="" />
         
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
         <meta property="og:image" content="/cwr-whatsapp-logo.webp" />
@@ -79,7 +81,7 @@ export default function RootLayout({
             .parallax-slow { will-change: transform; transform: translateZ(0); }
             .btn-pulse { animation: pulse 2s infinite; }
             @keyframes pulse { 0%,100% { transform: scale(1); } 50% { transform: scale(1.02); } }
-            /* Ensure hero background loads immediately */
+            /* CRITICAL: Force immediate hero background loading */
             .hero-bg { content-visibility: auto; contain-intrinsic-size: 100vw 100vh; }
           `
         }} />

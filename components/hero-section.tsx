@@ -90,7 +90,7 @@ export default function HeroSection({ whatsappLink }: HeroSectionProps) {
           quality={90}
           sizes="100vw"
           loading="eager"
-          unoptimized={false}
+          unoptimized={true}
         />
         <div className="absolute inset-0" style={{
           background: 'linear-gradient(to bottom, rgba(15, 37, 35, 0.8) 0%, rgba(15, 37, 35, 0.4) 60%, transparent 70%)'
