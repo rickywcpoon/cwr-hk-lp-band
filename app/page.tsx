@@ -125,13 +125,13 @@ export default function Home() {
           <ScrollAnimationWrapper className="text-center mb-16">
             <h2 className="text-3xl font-bold mb-4 text-neutral-darkest">真實案例・「錶」然一新</h2>
             <p className="text-neutral-dark max-w-3xl mx-auto text-sm">
-            左右滑動，見證「飽經風霜」到「完美如初」的蛻變。
+            左右滑動，見證「飽經風霜」到「完美如初」的蛻變
             </p>
           </ScrollAnimationWrapper>
 
           <ScrollAnimationWrapper animationClass="scale-in" className="max-w-4xl mx-auto pb-8">
             <ImageCompareSlider />
-            <p className="text-center text-neutral-dark mt-4 text-sm">細節執著，完美追求。</p>
+            <p className="text-center text-neutral-dark mt-4 text-sm">細節執著，完美追求</p>
           </ScrollAnimationWrapper>
 
           <ScrollAnimationWrapper className="mt-12 text-center">
@@ -152,7 +152,7 @@ export default function Home() {
           <ScrollAnimationWrapper className="text-center mb-6">
             <h2 className="text-3xl font-bold mb-4 text-neutral-darkest">頂級名錶・信心修復</h2>
             <p className="text-neutral-dark max-w-3xl mx-auto">
-            精通Rolex、Patek Phillipe、Audemars Piguet等各大品牌錶帶修復。
+            精通各大品牌錶帶修復
             </p>
           </ScrollAnimationWrapper>
         </div>
@@ -167,10 +167,10 @@ export default function Home() {
           <ScrollAnimationWrapper className="text-center mb-16">
             <h2 className="text-3xl font-bold mb-4 text-neutral-lighter">明智投資・遠勝天價更換</h2>
             <p className="text-neutral-light max-w-3xl mx-auto">
-            原廠換帶極昂貴，且未必能修復「鬆」等問題。專業修復費用更合理，針對性解決花痕、崩凹、鬆弛。
+            原廠換帶極昂貴，且未必能修復「鬆」等問題。專業修復費用更合理，針對性解決花痕、崩凹、鬆弛
             </p>
             <p className="text-neutral-light max-w-3xl mx-auto mt-4">
-            錶帶狀況各異，依材質、損耗及複雜性提供個人化報價。
+            錶帶狀況各異，依材質、損耗及複雜性提供個人化報價
             </p>
           </ScrollAnimationWrapper>
 
@@ -222,9 +222,9 @@ export default function Home() {
         <div className="absolute inset-0 bg-black/60"></div>
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative">
           <ScrollAnimationWrapper animationClass="scale-in" className="max-w-4xl mx-auto text-center text-neutral-lightest">
-            <h2 className="text-3xl md:text-4xl font-bold mb-6 text-neutral-lightest">手錶值得擁有第二次「新」生。</h2>
+            <h2 className="text-3xl md:text-4xl font-bold mb-6 text-neutral-lightest">手錶值得擁有重「新」</h2>
             <p className="text-xl text-neutral-lightest mb-8">
-            鬆弛、刮痕、損傷？專業修復，回復完美，重拾價值。
+            鬆弛、刮痕、損傷？專業修復，回復完美，重拾價值
             </p>
             <Link
               href={whatsappLink}

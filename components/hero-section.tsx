@@ -104,24 +104,17 @@ export default function HeroSection({ whatsappLink }: HeroSectionProps) {
             <h1 className="font-sans font-normal text-3xl sm:text-6xl lg:text-8xl tracking-tighter text-neutral-lighter">
               {/* Line 1: Always on its own line */}
               <span className="block">
-                手錶錶帶失色？
+                讓錶帶重拾
               </span>
-              {/* Line 2: Mobile separate line, Desktop inline with Line 3 */}
-              <span className="font-serif italic font-bold text-transparent bg-clip-text bg-gradient-to-r from-casal-lighter via-casal-light to-casal-lighter gradient-text-animate block sm:inline">
-                重拾原廠氣派，
-              </span>
-              {/* Line 3: Always on its own line */}
+              {/* Line 2: Always on its own line */}
               <span className="font-serif italic font-bold text-transparent bg-clip-text bg-gradient-to-r from-casal-lighter via-casal-light to-casal-lighter gradient-text-animate block">
-                經典再現
+                開箱氣派
               </span>
             </h1>
             <p className="hero-text-reveal hero-text-reveal-3 mt-6 font-sans text-base font-normal leading-7 text-neutral-lightest sm:text-lg sm:leading-8">
-              「鬆、花、崩凹」不再。專業修復，延續手錶不凡價值
+            專為名錶修復<br />「鬆、花、崩凹」<br />
+            延續手錶不凡價值
             </p>
-            <p className="hero-text-reveal hero-text-reveal-4 mt-8 font-sans text-xs font-normal leading-5 text-neutral-lightest text-opacity-90 sm:text-sm">
-              專為頂級名錶而設・尊重原裝・激光焊接・精密打磨
-            </p>
-            
 
             <div className="hero-text-reveal hero-text-reveal-4 flex flex-col sm:flex-row items-start mt-10 space-y-4 sm:space-y-0 sm:space-x-4">
               <Link

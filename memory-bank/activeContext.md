@@ -1,158 +1,220 @@
 # Active Context
 
-*This document tracks the current work focus, recent changes, next steps, active decisions and considerations, important patterns and preferences, learnings, and project insights.*
+*This document tracks the current work focus, recent changes, next steps, active decisions and considerations, important patterns and preferences, and learnings from the project.*
 
 ## Current Work Focus
 
-**OpenGraph & Hero LCP Optimization:** Recently updated OpenGraph metadata and implemented aggressive hero background image loading optimizations to ensure fastest possible LCP (Largest Contentful Paint) performance.
+**Project Status**: All major development phases completed successfully. The Classic Watch Repair landing page is now fully functional with comprehensive optimizations.
 
-## Recent Changes
+**Immediate State**: 
+- GTM tracking system fully implemented and verified
+- Performance optimizations completed with strategic image loading
+- Hero background loading optimized for fastest LCP
+- Restoration process navigation optimized for instant switching
+- All hydration errors resolved
+- Mobile optimization completed with consistent three-line H1 display
 
-### **OpenGraph & Hero LCP Critical Optimization**
-- **OpenGraph Updates (`app/layout.tsx`)**: Removed amplifyapp.com URL references and updated OpenGraph image to `cwr-whatsapp-logo.webp` (512x512) for better social sharing.
-- **MetadataBase Configuration**: Added `metadataBase: new URL('https://cwr-band.cuspgrowth.com')` to resolve social image warnings.
-- **Hero Background ASAP Loading**: Moved hero image preload to the very top of `<head>` for immediate download initiation.
-- **Enhanced Image Optimization (`components/hero-section.tsx`)**: Added `loading="eager"`, increased quality to 90%, and added GPU acceleration hints.
-- **Critical CSS Enhancement**: Added `transform: translateZ(0)` for GPU acceleration and `content-visibility` optimization for hero background.
+**Next Major Task**: PostHog integration for advanced user behavior analytics
 
-### **Performance Optimization Implementation**
-- **LCP Image Optimization (`components/hero-section.tsx`)**: Converted hero background from CSS background-image to Next.js Image component with `priority`, `fetchPriority="high"`, and optimized quality settings.
-- **Critical Resource Preloading (`app/layout.tsx`)**: Added high-priority preloading for hero background image and logo with `fetchPriority="high"`.
-- **Cache Headers (`next.config.mjs`)**: Implemented aggressive caching for static assets (1 year cache) and optimized headers for performance.
-- **Critical CSS Inlining**: Added inline critical CSS for above-the-fold content to eliminate render blocking.
-- **Font Optimization**: Enhanced Google Fonts loading with preload flags and fallback fonts for better FOIT/FOUT handling.
-- **Resource Hints**: Added strategic preconnect and dns-prefetch hints for external domains (fonts, GTM, WhatsApp).
-- **Image Prefetching**: Added prefetch for key images that appear below the fold.
+## Recent Changes (Latest Session)
 
-### **Google Tag Manager Implementation**
-- **GTM Container Setup (`app/layout.tsx`)**: Implemented GTM script with ID `GTM-WNMHG6DQ` using Next.js Script component with `afterInteractive` strategy for optimal performance.
-- **Performance Optimization**: Added preconnect and dns-prefetch hints for `googletagmanager.com` to reduce connection latency.
-- **Click Tracking**: Added comprehensive click tracking to all CTA buttons with unique IDs and event data.
-- **Page View Tracking (`components/gtm-page-view.tsx`)**: Client component for tracking page views and client-side navigation using Next.js App Router hooks.
-- **WhatsApp Widget Tracking**: Enhanced WhatsApp chat widget with click tracking for "Chat Now" button.
-- **Utility Functions (`lib/gtm.ts`)**: Created GTM utility functions for consistent event tracking across components.
+### Google Tag Manager Implementation
+- **GTM Container**: Integrated GTM-WNMHG6DQ with proper script placement
+- **Event Tracking**: Comprehensive WhatsApp click tracking for all CTAs
+- **Unique IDs**: Each CTA button has distinct tracking ID
+  - `cta-hero-whatsapp` - Hero section CTA
+  - `cta-restoration-process` - Process section CTA  
+  - `cta-usp-whatsapp` - USP section CTA
+  - `cta-final-whatsapp` - Final CTA
+  - `cta-widget-chat-now` - WhatsApp widget
+- **Event Data Structure**: Includes event type, source, element ID, page location, conversion action
+- **Client Component Conversion**: Updated `app/page.tsx` to support onClick handlers
 
-### **CTA Button Tracking Implementation**
-- **Hero Section**: `cta-hero-whatsapp` - tracks hero section WhatsApp clicks
-- **Restoration Process**: `cta-restoration-process` - tracks consultation requests from process section
-- **USP Section**: `cta-usp-whatsapp` - tracks free assessment clicks
-- **Final CTA**: `cta-final-whatsapp` - tracks final section conversion clicks
-- **Widget Chat**: `cta-widget-chat-now` - tracks WhatsApp widget chat button clicks
+### Performance Optimization Achievements
+- **Hero Background Priority**: Implemented multiple preloading strategies
+  - DNS prefetch and preconnect to image service
+  - Resource preload with `fetchPriority="high"`
+  - Unoptimized Next.js Image for bypassing processing delays
+  - Critical CSS for immediate loading
+- **Image Loading Hierarchy**: Established clear priority structure
+  1. Hero background (highest priority)
+  2. Header logo (high priority)
+  3. Loose vs right fit section (high priority, second visual element)
+  4. Process step images (medium priority with prefetch)
+  5. Below-the-fold images (low priority with lazy loading)
 
-### **Previous: Microanimations Implementation**
-- **CSS Animation System (`app/globals.css`)**: Added comprehensive animation classes including scroll-triggered, hover effects, and interactive feedback.
-- **Intersection Observer (`hooks/useIntersectionObserver.ts`)**: Custom hook for triggering animations when elements enter viewport.
-- **Animation Wrapper (`components/scroll-animation-wrapper.tsx`)**: Reusable component for applying scroll animations with stagger delays.
-- **Animation Observer (`components/animation-observer.tsx`)**: Global observer for managing all animated elements on the page.
+### Restoration Process Optimization
+- **Instant Navigation**: Multiple preloading strategies for step images
+  - Browser prefetch links in layout
+  - JavaScript Promise.all preloading on component mount
+  - Hidden Image elements with `loading="eager"`
+- **User Experience**: Loading indicators and disabled navigation until ready
+- **Quality Optimization**: Reduced to 75% for faster loading
 
-### **Hero Section Enhancements**
-- **Staggered Text Reveal (`components/hero-section.tsx`)**: Hero text elements animate in sequence with 0.2s delays.
-- **Gradient Text Animation**: Animated gradient background on main headline for visual appeal.
-- **Button Pulse Effect**: WhatsApp CTA button includes ripple effect on hover.
-- **Subtle Parallax**: Background image moves slower than scroll for depth perception.
-
-### **Interactive Elements**
-- **Card Hover Effects**: Service cards, testimonials, and Michael Young card include glow effects and lift animations.
-- **Process Step Interactions**: Restoration process includes touch/swipe support for mobile navigation.
-- **Brand Logo Animations**: Brand carousel logos include hover effects with scale and filter changes.
-- **Button Animations**: All CTA buttons include pulse effects and gentle bounce animations.
-
-### **Scroll-Triggered Animations**
-- **Section Reveals**: All major sections animate in from bottom with staggered timing.
-- **Directional Slides**: Brand carousel slides in from left, some elements from right.
-- **Scale Animations**: Image compare slider, pricing table, and CTA sections scale in.
-- **Testimonial Cards**: Individual testimonial cards animate with staggered delays.
-
-### **OpenGraph Update**
-- **Social Sharing Image**: Changed from `cwr-logo.png` to `cwr-whatsapp-logo.webp` (512x512) for better social media appearance.
-
-### **Michael Young Portrait Implementation**
-- **Hero Card Treatment (`app/page.tsx`)**: Transformed Michael Young section from standard 4-column grid to 3-column + hero card layout.
-- **Portrait Integration**: Added `/michael-young.webp` in circular format with casal-light border and gradient overlay.
-- **Enhanced Layout**: Side-by-side layout (portrait left, content right) on desktop, stacked on mobile.
-- **Visual Hierarchy**: Larger title (text-2xl), enhanced typography, and distinguished background gradient.
-- **Brand Consistency**: Used casal color scheme and maintained professional aesthetic.
-
-### **Mobile Optimization**
-- **Hero H1 Line Breaks (`components/hero-section.tsx`)**: Modified to display in three lines on mobile:
-  - Line 1: "手錶錶帶失色？"
-  - Line 2: "重拾原廠氣派，"
-  - Line 3: "經典再現。"
-
-### **Technical & SEO Improvements**
-- **Favicon Implementation (`app/layout.tsx`)**: Fixed favicon display using Next.js 13+ metadata.icons approach instead of manual head links.
-- **Enhanced Metadata**: Updated title to "錶帶魔術師 Michael Young | Classic Watch Repair HK - 專業錶帶修復" with comprehensive Chinese description and keywords.
-- **OpenGraph Optimization**: Added CWR logo (`/cwr-logo.png`) as social sharing image with proper dimensions (288x77).
-- **WhatsApp Preview**: Title updated to "錶帶魔術師 Michael Young | Classic Watch Repair" for better brand recognition.
-
-### **Previous Completed Work**
-- **Phase 1 Implementation completed**: All critical performance fixes successfully implemented.
-- **Restoration Process**: Added swipe functionality for mobile navigation in 4-step process component.
-- **Image Updates**: Process step images (step-1.webp through step-4.webp) implemented.
-- **Copy Refinements**: Comprehensive Traditional Chinese copy implementation with Rory Sutherland/Eugene Schwartz approach.
-- **UI Adjustments**: Text hierarchy fixes, contrast improvements, spacing optimizations.
-- **Component Updates**: Testimonials, brand carousel, image compare slider all refined.
+### Technical Fixes
+- **Hydration Errors**: Resolved server/client mismatches
+  - Fixed text content consistency ("經典再現。" with period)
+  - Removed conflicting image loading attributes
+- **Hero Animations**: Removed all animation delays for clean immediate display
+- **Parallax Effects**: Maintained visual effects while optimizing performance
 
 ## Next Steps
 
-### **Performance Optimization Complete ✅**
-- ✅ **LCP Optimization**: Hero image now uses `fetchPriority="high"` and Next.js Image optimization
-- ✅ **Render Blocking Eliminated**: Critical CSS inlined, external resources optimized
-- ✅ **Cache Strategy**: 1-year caching for static assets, optimized headers
-- ✅ **Font Loading**: Preload enabled with fallback fonts for better UX
-- ✅ **Resource Hints**: Strategic preconnect/dns-prefetch for external domains
-- ✅ **Build Success**: All optimizations implemented without breaking changes
-- 📊 **Expected Impact**: LCP should improve from 6.3s to <2.5s target
-- 🔄 **Next**: Deploy and re-test with Lighthouse to validate improvements
+### Immediate (Next Session)
+1. **PostHog Integration Planning**
+   - Research PostHog setup for Next.js App Router
+   - Plan event tracking structure beyond GTM
+   - Design conversion funnel analysis approach
+   - Consider heatmap and session recording implementation
 
-### **GTM Implementation Complete ✅**
-- ✅ **GTM Container**: Successfully implemented with ID `GTM-WNMHG6DQ`
-- ✅ **Performance Optimized**: Added preconnect/dns-prefetch for faster loading
-- ✅ **Click Tracking**: All CTA buttons and WhatsApp widget properly tracked
-- ✅ **Page View Tracking**: Automatic page view tracking for all routes
-- ✅ **Build Success**: Next.js build completed with no errors
-- ✅ **TypeScript Fixed**: Resolved all dataLayer type conflicts
-- 📊 **Ready for Testing**: GTM Preview Mode testing can now begin
+### Short Term (1-2 Sessions)
+2. **PostHog Implementation**
+   - Install and configure PostHog SDK
+   - Implement user behavior tracking
+   - Set up conversion funnel analysis
+   - Add heatmap and session recording capabilities
+   - Create A/B testing framework
 
-### **User Experience Testing**
-- A/B test animation effectiveness on user engagement metrics.
-- Monitor bounce rate and time on page improvements.
-- Test touch/swipe functionality across mobile devices.
+### Medium Term (Future Considerations)
+3. **Performance Monitoring**
+   - Implement Lighthouse CI for automated testing
+   - Add Real User Monitoring for Core Web Vitals
+   - Set up bundle analysis for dependency optimization
 
-### **Animation Refinements**
-- Consider adding loading state animations for better perceived performance.
-- Evaluate adding micro-interactions for form elements if needed.
-- Fine-tune animation timing and easing curves based on user feedback.
+4. **Advanced Optimizations**
+   - Consider Service Worker for offline functionality
+   - Further critical CSS optimization
+   - Advanced resource hints optimization
 
-### **Performance Optimization (Ongoing)**
-- Maintain LCP <2.5s target with new animations.
-- Monitor FCP improvements from perceived performance enhancements.
-- Ensure animations are GPU-accelerated where appropriate.
+## Active Decisions and Considerations
 
-## Active Decisions & Considerations
+### Performance Philosophy
+- **LCP Priority**: Hero background must load before all other images
+- **User Experience First**: Instant navigation takes precedence over file size
+- **Strategic Preloading**: Use multiple preloading strategies for critical resources
+- **Quality vs Speed**: Reduce image quality when it improves loading without visual impact
 
-- **CSS-Only Animations**: Chose CSS over JavaScript libraries (like Framer Motion) for better performance and smaller bundle size.
-- **Intersection Observer Strategy**: Using single global observer vs individual component observers for better performance.
-- **Animation Accessibility**: Ensuring animations respect user preferences and don't cause motion sickness.
-- **Touch Interaction**: Added swipe support for mobile users to enhance process step navigation.
-- **Performance vs. Polish**: Balancing visual appeal with loading speed and Core Web Vitals.
+### GTM Implementation Approach
+- **Comprehensive Tracking**: Every WhatsApp CTA tracked with unique identifiers
+- **Detailed Event Data**: Include source, element ID, page location for analysis
+- **Type Safety**: Use TypeScript with proper window.dataLayer handling
+- **Performance Conscious**: afterInteractive strategy to avoid blocking render
 
-## Important Patterns & Preferences
+### Image Optimization Strategy
+- **Hero Background**: Unoptimized for speed, with priority and preload
+- **High Priority Sections**: Preload with fetchPriority="high"
+- **Process Steps**: Prefetch for instant navigation
+- **Below-the-fold**: Lazy loading with prefetch for smooth scrolling
 
-- **Staggered Animations**: 0.1-0.4s delays for sequential element reveals create natural flow.
-- **Cubic-Bezier Easing**: Using `cubic-bezier(0.25, 0.46, 0.45, 0.94)` for smooth, natural motion.
-- **Scroll-Triggered Reveals**: Elements animate when 10% visible with 50px bottom margin for timing.
-- **Hover State Consistency**: All interactive elements include hover feedback with consistent timing (0.3s).
-- **Touch-First Mobile**: Swipe gestures complement button navigation for better mobile UX.
-- **GPU Acceleration**: Transform and opacity animations for optimal performance.
-- **Brand Color Integration**: Animation effects use casal color scheme for consistency.
+### Component Architecture Preferences
+- **Server Components Default**: Use Client Components only when necessary
+- **Composition Pattern**: Small, focused components with clear responsibilities
+- **TypeScript Interfaces**: All component props properly typed
+- **Performance Conscious**: Minimize client-side JavaScript
 
-## Learnings & Project Insights
+## Important Patterns and Preferences
 
-- **Animation Performance**: CSS animations significantly outperform JavaScript libraries for simple transitions.
-- **Intersection Observer**: Single global observer more efficient than multiple component-level observers.
-- **Mobile Touch UX**: Swipe gestures feel more natural than button-only navigation on mobile devices.
-- **Perceived Performance**: Well-timed animations make page feel faster even if load times are similar.
-- **Animation Hierarchy**: Staggered reveals guide user attention naturally through content flow.
-- **Accessibility Considerations**: Motion preferences and reduced motion settings crucial for inclusive design.
-- **Bundle Size Impact**: Removing Framer Motion dependency reduced JavaScript bundle significantly. 
+### Code Organization
+```typescript
+// GTM Event Tracking Pattern
+if (typeof window !== 'undefined' && (window as any).dataLayer) {
+  ;(window as any).dataLayer.push({
+    event: 'whatsapp_click',
+    click_source: 'section_name',
+    click_element_id: 'unique_id',
+    page_location: window.location.href,
+    conversion_action: 'whatsapp_contact',
+  })
+}
+```
+
+### Image Loading Pattern
+```tsx
+// High Priority Image Pattern
+<Image
+  src="/image.webp"
+  alt="Description"
+  priority
+  fetchPriority="high"
+  loading="eager"
+  quality={85}
+  // ... other props
+/>
+```
+
+### Resource Preloading Pattern
+```html
+<!-- Critical resource preloading in layout -->
+<link rel="preload" href="/critical-image.webp" as="image" type="image/webp" fetchPriority="high" crossOrigin="" />
+```
+
+### Component Props Pattern
+```typescript
+interface ComponentProps {
+  whatsappLink: string
+  // Other typed props
+}
+
+export default function Component({ whatsappLink }: ComponentProps) {
+  // Implementation
+}
+```
+
+## Learnings and Project Insights
+
+### Performance Optimization Insights
+1. **Image Loading Order Matters**: Next.js processes images in DOM order, not priority order
+2. **Multiple Preloading Strategies**: Combine browser prefetch, JavaScript preloading, and hidden images
+3. **Unoptimized for Speed**: Sometimes bypassing optimization improves loading for critical resources
+4. **Critical CSS Impact**: Inline styles can significantly improve above-the-fold rendering
+
+### GTM Implementation Learnings
+1. **Client Component Necessity**: onClick handlers require Client Components
+2. **Type Safety with GTM**: Use `(window as any).dataLayer` for TypeScript compatibility
+3. **ESLint Configuration**: Allow `any` types specifically for GTM integration
+4. **Event Data Structure**: Comprehensive data improves analysis capabilities
+
+### User Experience Discoveries
+1. **Instant Navigation Expectation**: Users expect immediate response to clicks
+2. **Loading States Important**: Visual feedback during loading improves perceived performance
+3. **Mobile Display Consistency**: Three-line H1 must display consistently across devices
+4. **Animation vs Performance**: Sometimes removing animations improves user experience
+
+### Technical Architecture Insights
+1. **Server vs Client Components**: Use Client Components sparingly for better performance
+2. **Hydration Error Prevention**: Ensure server/client consistency in all rendered content
+3. **Resource Priority Hierarchy**: Establish clear loading priorities for optimal LCP
+4. **Cache Strategy**: Long-term caching for static assets improves repeat visits
+
+## Project Context Reminders
+
+### Target Audience
+- **Primary**: Hong Kong luxury watch owners (Mr. Leung profile)
+- **Language**: Traditional Chinese with English brand elements
+- **Platform**: Mobile-first with WhatsApp as primary conversion channel
+
+### Business Goals
+- **Primary Conversion**: WhatsApp contact for watch band restoration
+- **Trust Building**: Michael Young personal branding and expertise showcase
+- **Service Differentiation**: Laser welding technology and original restoration approach
+
+### Technical Excellence Standards
+- **Performance**: LCP < 2.5s non-negotiable
+- **Accessibility**: WCAG AA compliance for color contrast
+- **SEO**: Comprehensive metadata for Hong Kong market
+- **Analytics**: Comprehensive tracking for conversion optimization
+
+## Memory Bank Maintenance Notes
+
+**Last Updated**: Current session with comprehensive GTM implementation and performance optimization completion
+
+**Key Files Updated**:
+- `progress.md` - Updated with all completed phases and PostHog next steps
+- `techContext.md` - Comprehensive technical documentation created
+- `activeContext.md` - Current state and patterns documented
+
+**Next Memory Bank Update Triggers**:
+- PostHog integration completion
+- Performance monitoring implementation
+- Any significant architectural changes
+- User feedback requiring major adjustments 

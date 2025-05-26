@@ -58,7 +58,7 @@ export default function TestimonialsSection() {
         </div>
 
         <p className="text-center text-neutral-dark max-w-xl mx-auto mb-10 text-md">
-          真實體驗，修復後的喜悅與安心。
+          真實體驗，修復後的喜悅與安心
         </p>
 
         <div className="flex flex-col items-center">

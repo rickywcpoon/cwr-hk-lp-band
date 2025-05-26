@@ -37,13 +37,13 @@ export default function LooseVsRightFit({ whatsappLink }: LooseVsRightFitProps) 
               <h2 className="text-4xl md:text-5xl font-bold text-neutral-lighter mb-6 leading-tight">
                 錶帶「虛位」不再？<br />
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-casal-lighter to-casal-light block">
-                  重拾原廠貼合感。
+                  重拾原廠貼合感
                 </span>
               </h2>
 
               <div className="space-y-6 text-lg text-neutral-lighter leading-relaxed">
                 <p className="font-medium text-xl text-neutral-lighter">
-                  錶帶鬆垮（「吊吊揈」），影響佩戴，更可能暗藏安全隱憂。我們專注解決錶帶「虛位」問題，恢復應有緊緻，讓腕錶穩固貼合。
+                  錶帶鬆垮「吊吊揈」，影響佩戴，更可能暗藏安全隱憂。我們專注解決錶帶「虛位」問題，恢復應有緊緻，讓腕錶穩固貼合。
                 </p>
               </div>
             </div>
