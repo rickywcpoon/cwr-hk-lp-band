@@ -275,24 +275,7 @@ body {
   transform: scale(1);
 }
 
-/* Hero text reveal animation */
-.hero-text-reveal {
-  opacity: 0;
-  transform: translateY(20px);
-  animation: hero-reveal 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
-}
-
-@keyframes hero-reveal {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.hero-text-reveal-1 { animation-delay: 0.2s; }
-.hero-text-reveal-2 { animation-delay: 0.4s; }
-.hero-text-reveal-3 { animation-delay: 0.6s; }
-.hero-text-reveal-4 { animation-delay: 0.8s; }
+/* Hero animations removed - showing all lines immediately */
 
 /* Testimonial card special effect */
 .testimonial-card {

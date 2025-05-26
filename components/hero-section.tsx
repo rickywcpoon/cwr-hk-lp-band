@@ -27,7 +27,23 @@ export default function HeroSection({ whatsappLink }: HeroSectionProps) {
     }
 
     window.addEventListener("scroll", handleScroll)
-    return () => window.removeEventListener("scroll", handleScroll)
+
+    // Ensure hero text animations trigger properly
+    const heroTextElements = document.querySelectorAll('.hero-text-reveal')
+    
+    // Fallback: if animations don't work after 2 seconds, show text immediately
+    const fallbackTimer = setTimeout(() => {
+      heroTextElements.forEach(element => {
+        if (window.getComputedStyle(element).opacity === '0') {
+          element.classList.add('no-animation')
+        }
+      })
+    }, 2000)
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll)
+      clearTimeout(fallbackTimer)
+    }
   }, [])
 
   return (
@@ -88,9 +104,16 @@ export default function HeroSection({ whatsappLink }: HeroSectionProps) {
         <div className="px-6 mx-auto sm:px-8 lg:px-12 max-w-7xl">
           <div className="w-[60%]">
             <h1 className="font-sans font-normal text-3xl sm:text-6xl lg:text-8xl tracking-tighter text-neutral-lighter">
-              <span className="hero-text-reveal hero-text-reveal-1 block">手錶錶帶失色？</span>
-              <span className="hero-text-reveal hero-text-reveal-2 font-serif italic font-bold text-transparent bg-clip-text bg-gradient-to-r from-casal-lighter via-casal-light to-casal-lighter gradient-text-animate block">
-                重拾原廠氣派，<br />
+              {/* Line 1: Always on its own line */}
+              <span className="block">
+                手錶錶帶失色？
+              </span>
+              {/* Line 2: Mobile separate line, Desktop inline with Line 3 */}
+              <span className="font-serif italic font-bold text-transparent bg-clip-text bg-gradient-to-r from-casal-lighter via-casal-light to-casal-lighter gradient-text-animate block sm:inline">
+                重拾原廠氣派，
+              </span>
+              {/* Line 3: Always on its own line */}
+              <span className="font-serif italic font-bold text-transparent bg-clip-text bg-gradient-to-r from-casal-lighter via-casal-light to-casal-lighter gradient-text-animate block">
                 經典再現。
               </span>
             </h1>

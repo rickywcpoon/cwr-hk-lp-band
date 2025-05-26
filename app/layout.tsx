@@ -74,8 +74,6 @@ export default function RootLayout({
         <style dangerouslySetInnerHTML={{
           __html: `
             /* Critical CSS for hero section - LCP optimization */
-            .hero-text-reveal { opacity: 0; transform: translateY(20px); }
-            .hero-text-reveal.animate { opacity: 1; transform: translateY(0); transition: all 0.8s ease-out; }
             .gradient-text-animate { background-size: 200% 200%; animation: gradient 3s ease infinite; }
             @keyframes gradient { 0%,100% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } }
             .parallax-slow { will-change: transform; transform: translateZ(0); }
