@@ -67,8 +67,6 @@ export default function HeroSection({ whatsappLink }: HeroSectionProps) {
                   width={288}
                   height={77}
                   className="h-[77px] w-auto object-contain"
-                  priority
-                  fetchPriority="high"
                   quality={90}
                 />
               </div>
@@ -87,7 +85,7 @@ export default function HeroSection({ whatsappLink }: HeroSectionProps) {
           style={{
             transform: `translateY(${parallaxOffset}px)`,
           }}
-          priority
+          priority={true}
           fetchPriority="high"
           quality={90}
           sizes="100vw"
@@ -114,11 +112,11 @@ export default function HeroSection({ whatsappLink }: HeroSectionProps) {
               </span>
               {/* Line 3: Always on its own line */}
               <span className="font-serif italic font-bold text-transparent bg-clip-text bg-gradient-to-r from-casal-lighter via-casal-light to-casal-lighter gradient-text-animate block">
-                經典再現。
+                經典再現
               </span>
             </h1>
             <p className="hero-text-reveal hero-text-reveal-3 mt-6 font-sans text-base font-normal leading-7 text-neutral-lightest sm:text-lg sm:leading-8">
-              「鬆、花、崩凹」不再。專業修復，延續手錶不凡價值。
+              「鬆、花、崩凹」不再。專業修復，延續手錶不凡價值
             </p>
             <p className="hero-text-reveal hero-text-reveal-4 mt-8 font-sans text-xs font-normal leading-5 text-neutral-lightest text-opacity-90 sm:text-sm">
               專為頂級名錶而設・尊重原裝・激光焊接・精密打磨

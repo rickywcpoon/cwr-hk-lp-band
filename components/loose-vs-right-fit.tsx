@@ -20,7 +20,7 @@ export default function LooseVsRightFit({ whatsappLink }: LooseVsRightFitProps) 
                 width={600}
                 height={400}
                 className="w-full h-auto object-cover"
-                priority
+                loading="lazy"
                 sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 600px"
                 quality={85}
                 placeholder="blur"

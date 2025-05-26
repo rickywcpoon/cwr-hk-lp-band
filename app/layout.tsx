@@ -58,7 +58,7 @@ export default function RootLayout({
   return (
     <html lang="zh-HK" className={`${inter.variable} ${playfair.variable}`}>
       <head>
-        {/* IMMEDIATE: Start hero image download before anything else */}
+        {/* CRITICAL: Hero background image MUST load first - LCP optimization */}
         <link rel="preload" href="/hero-band-restoration.webp" as="image" type="image/webp" fetchPriority="high" />
         
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
@@ -66,9 +66,9 @@ export default function RootLayout({
         <meta property="og:image:width" content="512" />
         <meta property="og:image:height" content="512" />
         <meta property="og:image:type" content="image/webp" />
-        {/* Critical resource preloading for LCP optimization */}
+        
+        {/* Secondary critical resources - logo for header */}
         <link rel="preload" href="/cwr-logo.png" as="image" type="image/png" fetchPriority="high" />
-        <link rel="preload" href="/cwr-whatsapp-logo.webp" as="image" type="image/webp" fetchPriority="high" />
         
         {/* Critical CSS for above-the-fold content */}
         <style dangerouslySetInnerHTML={{
@@ -91,9 +91,9 @@ export default function RootLayout({
         <link rel="preconnect" href="https://wa.me" />
         <link rel="dns-prefetch" href="https://connect.facebook.net" />
         
-        {/* Prefetch critical resources */}
-        <link rel="prefetch" href="/loose-vs-good-fitting.webp" />
+        {/* Prefetch below-the-fold resources (lower priority) */}
         <link rel="prefetch" href="/michael-young.webp" />
+        <link rel="prefetch" href="/cwr-whatsapp-logo.webp" />
       </head>
       <body className="font-inter">
         {/* Google Tag Manager */}

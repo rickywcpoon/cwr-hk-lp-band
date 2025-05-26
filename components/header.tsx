@@ -37,7 +37,7 @@ export default function Header() {
                 width={288}
                 height={77}
                 className="h-[77px] w-auto object-contain"
-                priority
+                loading="eager"
               />
             </div>
           </Link>
