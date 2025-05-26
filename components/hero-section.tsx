@@ -61,8 +61,8 @@ export default function HeroSection({ whatsappLink }: HeroSectionProps) {
         </div>
       </header>
 
-      {/* Background Image with Gradient Overlay - Optimized for LCP */}
-      <div className="absolute inset-0">
+      {/* Background Image with Gradient Overlay - CRITICAL LCP OPTIMIZATION */}
+      <div className="absolute inset-0 hero-bg">
         <Image
           src="/hero-band-restoration.webp"
           alt="Watch band restoration background"
@@ -73,8 +73,10 @@ export default function HeroSection({ whatsappLink }: HeroSectionProps) {
           }}
           priority
           fetchPriority="high"
-          quality={85}
+          quality={90}
           sizes="100vw"
+          loading="eager"
+          unoptimized={false}
         />
         <div className="absolute inset-0" style={{
           background: 'linear-gradient(to bottom, rgba(15, 37, 35, 0.8) 0%, rgba(15, 37, 35, 0.4) 60%, transparent 70%)'

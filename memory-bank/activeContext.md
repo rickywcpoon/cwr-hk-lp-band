@@ -4,9 +4,16 @@
 
 ## Current Work Focus
 
-**Performance Optimization:** Recently implemented comprehensive performance optimizations to address slow loading speeds identified in Lighthouse audit. Focus on LCP optimization, render blocking elimination, and cache improvements to achieve sub-2.5s LCP target.
+**OpenGraph & Hero LCP Optimization:** Recently updated OpenGraph metadata and implemented aggressive hero background image loading optimizations to ensure fastest possible LCP (Largest Contentful Paint) performance.
 
 ## Recent Changes
+
+### **OpenGraph & Hero LCP Critical Optimization**
+- **OpenGraph Updates (`app/layout.tsx`)**: Removed amplifyapp.com URL references and updated OpenGraph image to `cwr-whatsapp-logo.webp` (512x512) for better social sharing.
+- **MetadataBase Configuration**: Added `metadataBase: new URL('https://cwr-band.cuspgrowth.com')` to resolve social image warnings.
+- **Hero Background ASAP Loading**: Moved hero image preload to the very top of `<head>` for immediate download initiation.
+- **Enhanced Image Optimization (`components/hero-section.tsx`)**: Added `loading="eager"`, increased quality to 90%, and added GPU acceleration hints.
+- **Critical CSS Enhancement**: Added `transform: translateZ(0)` for GPU acceleration and `content-visibility` optimization for hero background.
 
 ### **Performance Optimization Implementation**
 - **LCP Image Optimization (`components/hero-section.tsx`)**: Converted hero background from CSS background-image to Next.js Image component with `priority`, `fetchPriority="high"`, and optimized quality settings.
