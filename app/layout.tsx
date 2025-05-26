@@ -100,11 +100,11 @@ export default function RootLayout({
         <link rel="prefetch" href="/michael-young.webp" />
         <link rel="prefetch" href="/cwr-whatsapp-logo.webp" />
         
-        {/* Prefetch restoration process step images for instant navigation */}
-        <link rel="prefetch" href="/process/step-1.webp" />
-        <link rel="prefetch" href="/process/step-2.webp" />
-        <link rel="prefetch" href="/process/step-3.webp" />
-        <link rel="prefetch" href="/process/step-4.webp" />
+        {/* Preload restoration process step images for instant navigation */}
+        <link rel="preload" href="/process/step-1.webp" as="image" type="image/webp" fetchPriority="high" />
+        <link rel="preload" href="/process/step-2.webp" as="image" type="image/webp" fetchPriority="high" />
+        <link rel="preload" href="/process/step-3.webp" as="image" type="image/webp" fetchPriority="high" />
+        <link rel="preload" href="/process/step-4.webp" as="image" type="image/webp" fetchPriority="high" />
       </head>
       <body className="font-inter">
         {/* Google Tag Manager */}

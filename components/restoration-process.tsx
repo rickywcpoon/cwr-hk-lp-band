@@ -41,15 +41,22 @@ export default function RestorationProcess() {
   const [touchEnd, setTouchEnd] = useState<number | null>(null)
   const [imagesPreloaded, setImagesPreloaded] = useState(false)
 
-  // Preload all step images when component mounts
+  // Aggressive preload all step images when component mounts
   useEffect(() => {
     const preloadImages = async () => {
-      const imagePromises = restorationSteps.map((step) => {
+      const imagePromises = restorationSteps.map((step, index) => {
         return new Promise((resolve, reject) => {
           const img = new window.Image()
           img.onload = resolve
           img.onerror = reject
           img.src = step.image
+          // Force browser to cache with proper dimensions
+          img.width = 600
+          img.height = 400
+          // Higher priority for first few images
+          if (index <= 2) {
+            img.fetchPriority = 'high'
+          }
         })
       })
 
@@ -62,7 +69,15 @@ export default function RestorationProcess() {
       }
     }
 
+    // Start preloading immediately
     preloadImages()
+    
+    // Also set a fallback timer to enable navigation even if preloading is slow
+    const fallbackTimer = setTimeout(() => {
+      setImagesPreloaded(true)
+    }, 3000)
+
+    return () => clearTimeout(fallbackTimer)
   }, [])
 
   const nextStep = () => {
@@ -126,7 +141,7 @@ export default function RestorationProcess() {
         </div>
       </div>
 
-      {/* Hidden preload images for instant switching */}
+      {/* Hidden preload images for instant switching - using proper dimensions for browser caching */}
       <div className="hidden">
         {restorationSteps.map((step, index) => (
           index !== activeStep && (
@@ -134,10 +149,12 @@ export default function RestorationProcess() {
               key={`preload-${step.id}`}
               src={step.image}
               alt={`Preload ${step.title}`}
-              width={1}
-              height={1}
+              width={600}
+              height={400}
               loading="eager"
               quality={75}
+              priority={index <= 2}
+              fetchPriority={index <= 2 ? "high" : "low"}
             />
           )
         ))}
@@ -171,10 +188,10 @@ export default function RestorationProcess() {
               fill
               className="object-cover"
               sizes="(max-width: 768px) 100vw, 1200px"
-              loading={activeStep === 0 ? "eager" : "lazy"}
+              loading="eager"
               quality={75}
-              priority={activeStep === 0}
-              fetchPriority={activeStep === 0 ? "high" : "low"}
+              priority={true}
+              fetchPriority="high"
             />
           </div>
 
