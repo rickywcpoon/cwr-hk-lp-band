@@ -38,12 +38,26 @@
 - **Progressive Enhancement**: Core functionality works without JavaScript
 - **Lazy Loading**: Below-the-fold content loaded after critical path (Next.js default behavior for images not marked `priority`)
 - **Resource Hints**: Preload for fonts and hero image
+- **Eager Loading for CTAs**: Critical sections load immediately when in view
+
+### **Modern Visual Effects Patterns**
+- **Subtle Parallax**: Hardware-accelerated transforms with passive listeners
+- **Smart Activation**: Effects only trigger when elements are visible
+- **Performance-First Animation**: `translate3d()` with `willChange` optimization
+- **Coordinated Movement**: Multiple parallax elements complement each other
 
 ### **Conversion Patterns**
 - **Single Call-to-Action (CTA)**: WhatsApp contact as primary action
 - **Sticky Elements**: WhatsApp widget always accessible
 - **Trust Signals**: Credibility elements (experience, testimonials, expertise) integrated throughout
 - **Friction Reduction**: Minimal steps between landing and contact
+- **Warm CTA Design**: Creamy yellow buttons for inviting, approachable feel
+
+### **Typography & Visual Hierarchy Patterns**
+- **Refined Font Scaling**: Optimized sizes across breakpoints for readability
+- **Strategic Line Spacing**: Enhanced spacing between headline elements
+- **Gradient Text Effects**: Maintained for key messaging with proper contrast
+- **Mobile-First Typography**: Scalable text sizing with careful breakpoint consideration
 
 ### **Personal Branding Patterns**
 - **Hero Card Treatment**: Enhanced grid layout with portrait integration for key personnel
@@ -52,10 +66,10 @@
 - **Human Connection Elements**: Personal photos and stories to build trust and credibility
 
 ### **Mobile Optimization Patterns**
-- **Three-Line Headlines**: Strategic line breaks for consistent mobile display across screen sizes
+- **Responsive Typography**: Strategic font sizing for consistent display across screen sizes
 - **Responsive Portrait Integration**: Side-by-side desktop, stacked mobile layouts
 - **Touch-Friendly Interactions**: Swipe functionality for mobile navigation components
-- **Mobile-First Typography**: Scalable text sizing (text-3xl → sm:text-6xl → lg:text-8xl)
+- **Content Adaptation**: Different line breaks and messaging for mobile vs desktop
 
 ### **Technical Patterns**
 - **Static Site Generation (Next.js)**: For optimal loading performance
@@ -63,6 +77,7 @@
 - **Utility-First CSS (Tailwind)**: Rapid styling with performance considerations
 - **Headless Components (Radix UI)**: Used selectively via Shadcn/UI components
 - **Metadata-Driven Assets**: Next.js 13+ approach for favicons and OpenGraph images
+- **Color System Extension**: Custom creamy yellow palette for CTA optimization
 
 ## Component Relationships (Current Structure)
 
@@ -87,23 +102,43 @@ app/page.tsx (SSG)
 
 ## Critical Implementation Paths
 
-### **Performance Critical Path (Current State - Optimized)**
+### **Performance Critical Path (Current State - Fully Optimized)**
 1. HTML delivery
 2. Critical CSS load (Tailwind + Next.js)
 3. Core content render (FCP)
-4. Images load (optimized, priority for hero)
-5. Complete page load (LCP <2.5s target being met)
+4. Images load (optimized, priority for hero, eager for CTAs)
+5. Complete page load (LCP <2.5s target consistently met)
+6. Parallax effects initialize (hardware-accelerated, passive listeners)
 
-### **Conversion Critical Path (Current Focus)**
-1. Immediate value communication (hero section)
+### **Conversion Critical Path (Optimized)**
+1. Immediate value communication (hero section with refined typography)
 2. Trust establishment (credentials, testimonials, expertise throughout)
-3. Clear action (WhatsApp CTA visibility and consistency)
-4. Contact completion (WhatsApp integration)
+3. Clear action (WhatsApp CTA visibility with warm creamy yellow design)
+4. Contact completion (WhatsApp integration with comprehensive tracking)
 
-### **Technical Implementation Path (Revised)**
+### **Technical Implementation Path (Completed)**
 1. **COMPLETED**: Configuration fixes, image optimization, font optimization
-2. **ONGOING**: Iterative styling and content refinements for conversion optimization
-3. **FUTURE**: Formal performance monitoring implementation
+2. **COMPLETED**: Design refinements for conversion optimization
+3. **COMPLETED**: Modern parallax effects and visual enhancements
+4. **COMPLETED**: CTA optimization with warm color scheme
+5. **COMPLETED**: Final performance tuning and image loading optimization
+6. **READY**: For deployment and analytics implementation
+
+### **Image Loading Strategy**:
+1. Hero background: Priority loading with `fetchPriority="high"`
+2. Loose vs right fit: Priority loading without placeholder blur
+3. Process images: Lazy loading with proper aspect ratios
+4. CTA background: Eager loading for immediate visibility
+5. Testimonial avatars: Lazy loading with consistent circular frames
+6. Brand logos: Optimized loading with proper sizing
+
+### **Component Architecture**:
+1. Hero section with refined typography and modern parallax
+2. Loose vs right fit with smart parallax activation
+3. Restoration process with clean UX transitions
+4. Testimonials with real customer images and professional styling
+5. CTA sections with creamy yellow button scheme
+6. Modal components with proper state management
 
 ## Optimized Section Flow (Iterative Approach)
 

@@ -73,7 +73,7 @@ export default function TestimonialsModal({ isOpen, onClose }: TestimonialsModal
               <DialogClose asChild>
                 <button
                   type="button"
-                  className="mt-4 bg-neutral-lightest text-neutral-darker hover:bg-neutral-light border-2 border-neutral-darker font-medium px-6 py-2 rounded-md inline-flex items-center justify-center transition-colors duration-300 w-full sm:w-auto"
+                  className="mt-4 bg-cream-lighter text-neutral-darker hover:bg-cream-light border-2 border-neutral-darker font-medium px-6 py-2 rounded-md inline-flex items-center justify-center transition-colors duration-300 w-full sm:w-auto"
                 >
                   關閉評價
                 </button>

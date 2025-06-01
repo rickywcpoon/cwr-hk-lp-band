@@ -161,7 +161,7 @@ export default function RestorationProcess() {
       </div>
 
       {/* Combined Content Card - Image and Text in one visual group */}
-      <div className="bg-white rounded-lg shadow-lg border border-gray-200 overflow-hidden scale-in card-hover-glow">
+      <div className="bg-white rounded-lg shadow-lg border border-gray-200 overflow-hidden scale-in">
         {/* Image Section with 3:2 aspect ratio */}
         <div 
           className="relative w-full" 

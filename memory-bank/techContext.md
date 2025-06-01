@@ -21,6 +21,8 @@
 - **Font Optimization** - next/font with Inter and Playfair Display
 - **Critical CSS Inlining** - Above-the-fold styles for faster rendering
 - **Resource Preloading** - Strategic preload/prefetch for critical assets
+- **Modern Parallax Effects** - Hardware-accelerated transforms with passive listeners
+- **Eager Loading Strategy** - Critical sections load immediately when in view
 
 ### Analytics & Tracking
 - **Google Tag Manager (GTM-WNMHG6DQ)** - Comprehensive event tracking
@@ -31,6 +33,11 @@
 - **ESLint** - Code linting with custom rules for GTM
 - **TypeScript Compiler** - Type checking and compilation
 - **PNPM** - Package manager for efficient dependency management
+
+### Design System
+- **Creamy Yellow CTA Palette** - Warm color scheme for better conversion
+- **Refined Typography** - Optimized font sizes and spacing across breakpoints
+- **Modern Parallax** - Subtle, performance-optimized visual effects
 
 ## Development Setup
 
@@ -84,17 +91,24 @@ cwr-hk-lp-band/
 - **LCP < 2.5s** - Largest Contentful Paint optimization
 - **Hero background priority** - Must load before all other images
 - **Instant navigation** - Process steps must switch without delay
-- **Mobile optimization** - Consistent three-line H1 display
+- **Mobile optimization** - Responsive layouts with refined typography
+- **Eager loading for CTAs** - Critical sections load immediately when visible
 
 ### Browser Compatibility
 - **Modern browsers** - ES2020+ features used
 - **Mobile-first** - Responsive design with touch interactions
 - **Accessibility** - WCAG AA compliance for color contrast
+- **Hardware acceleration** - CSS transforms optimized for smooth performance
 
 ### SEO & Social Sharing
 - **Traditional Chinese content** - Primary language for Hong Kong market
 - **OpenGraph optimization** - WhatsApp sharing with CWR logo
 - **Structured metadata** - Comprehensive meta tags and descriptions
+
+### Design Standards
+- **Creamy yellow CTAs** - Consistent warm color scheme across all buttons
+- **Subtle parallax effects** - Modern, performance-optimized visual enhancements
+- **Typography hierarchy** - Proper font sizing and spacing for readability
 
 ## Dependencies
 
@@ -129,6 +143,34 @@ cwr-hk-lp-band/
 2. **High Priority Images**: Preload + priority + fetchPriority="high"
 3. **Process Steps**: Prefetch + JavaScript preloading + hidden images
 4. **Below-the-fold**: Lazy loading with prefetch
+5. **CTA Backgrounds**: Eager loading for immediate visibility when in view
+
+### Modern Parallax Pattern
+```typescript
+// Subtle, performance-optimized parallax
+useEffect(() => {
+  const handleScroll = () => {
+    const scrollY = window.scrollY
+    setParallaxOffset(scrollY * 0.1) // Very gentle movement
+  }
+
+  window.addEventListener("scroll", handleScroll, { passive: true })
+  return () => window.removeEventListener("scroll", handleScroll)
+}, [])
+
+// Hardware-accelerated transform
+style={{
+  transform: `translate3d(0, ${parallaxOffset}px, 0)`,
+  willChange: 'transform'
+}}
+className="transition-transform duration-75 ease-out"
+```
+
+### Creamy Yellow CTA Pattern
+```typescript
+// Standard CTA button styling
+className="bg-cream-lighter text-neutral-darker hover:bg-cream-light border-2 border-neutral-darker"
+```
 
 ### GTM Event Tracking Pattern
 ```typescript
@@ -212,3 +254,10 @@ if (typeof window !== 'undefined' && (window as any).dataLayer) {
 - **Service Worker** - Offline functionality
 - **Advanced Critical CSS** - Further optimization
 - **Resource hints optimization** - Fine-tuned preloading
+
+### Testimonials Integration Patterns
+- **Real Customer Images**: Replaced placeholder avatars with actual customer photos
+- **Consistent Circular Frames**: 48px circular avatars with `border-2 border-gray-200`
+- **Professional Image Styling**: `object-cover object-center` for optimal face positioning
+- **Optimized Loading**: Lazy loading for testimonial images with proper sizing hints
+- **File Organization**: Testimonial images stored in `/public/testimonials/` directory

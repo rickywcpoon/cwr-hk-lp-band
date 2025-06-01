@@ -39,7 +39,7 @@ export default function Home() {
             <Link
               href={whatsappLink}
               id="cta-restoration-process"
-              className="bg-neutral-lightest text-neutral-darker hover:bg-neutral-light border-2 border-neutral-darker font-medium px-8 py-4 rounded-md inline-flex items-center justify-center transition-all duration-300 hover:shadow-lg"
+              className="bg-cream-lighter text-neutral-darker hover:bg-cream-light border-2 border-neutral-darker font-medium px-8 py-4 rounded-md inline-flex items-center justify-center transition-all duration-300 hover:scale-105 hover:shadow-lg"
               onClick={() => {
                 if (typeof window !== 'undefined' && (window as any).dataLayer) {
                   ;(window as any).dataLayer.push({
@@ -63,7 +63,7 @@ export default function Home() {
       <section className="py-20 bg-neutral-darkest text-neutral-lighter">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <ScrollAnimationWrapper className="text-center mb-16">
-            <h2 className="text-3xl font-bold mb-4 text-neutral-lighter">為何放心將手錶交給我們？</h2>
+            <h2 className="text-3xl font-bold mb-4 text-neutral-lighter">放心將手錶交給我們</h2>
           </ScrollAnimationWrapper>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-8">
@@ -137,7 +137,7 @@ export default function Home() {
           <ScrollAnimationWrapper className="mt-12 text-center">
             <Link
               href={whatsappLink}
-              className="btn-pulse bg-neutral-lightest text-neutral-darker hover:bg-neutral-light border-2 border-neutral-darker font-medium px-8 py-4 rounded-md inline-flex items-center justify-center transition-all duration-300 hover:shadow-lg"
+              className="btn-pulse bg-cream-lighter text-neutral-darker hover:bg-cream-light border-2 border-neutral-darker font-medium px-8 py-4 rounded-md inline-flex items-center justify-center transition-all duration-300 hover:scale-105 hover:shadow-lg"
             >
               讓我的手錶也煥然一新
               <ChevronRight className="ml-2 h-5 w-5" />
@@ -182,7 +182,7 @@ export default function Home() {
             <Link
               href={whatsappLink}
               id="cta-usp-whatsapp"
-              className="btn-pulse bg-neutral-lightest text-neutral-darker hover:bg-neutral-light border-2 border-neutral-darker font-medium px-8 py-4 rounded-md inline-flex items-center justify-center transition-all duration-300 hover:shadow-lg"
+              className="btn-pulse bg-cream-lighter text-neutral-darker hover:bg-cream-light border-2 border-neutral-darker font-medium px-8 py-4 rounded-md inline-flex items-center justify-center transition-all duration-300 hover:scale-105 hover:shadow-lg"
               onClick={() => {
                 if (typeof window !== 'undefined' && (window as any).dataLayer) {
                   ;(window as any).dataLayer.push({
@@ -215,7 +215,7 @@ export default function Home() {
           alt="Classic Watch Repair Workshop"
           fill
           className="object-cover"
-          loading="lazy"
+          loading="eager"
           quality={75}
           sizes="100vw"
         />
@@ -229,7 +229,7 @@ export default function Home() {
             <Link
               href={whatsappLink}
               id="cta-final-whatsapp"
-              className="btn-pulse animate-gentle-bounce bg-neutral-lightest text-neutral-darker hover:bg-neutral-light border-2 border-neutral-darker font-bold px-10 py-5 rounded-md inline-flex items-center justify-center text-lg transition-all duration-300 hover:shadow-lg"
+              className="btn-pulse animate-gentle-bounce bg-cream-lighter text-neutral-darker hover:bg-cream-light border-2 border-neutral-darker font-bold px-10 py-5 rounded-md inline-flex items-center justify-center text-lg transition-all duration-300 hover:scale-105 hover:shadow-lg"
               onClick={() => {
                 if (typeof window !== 'undefined' && (window as any).dataLayer) {
                   ;(window as any).dataLayer.push({

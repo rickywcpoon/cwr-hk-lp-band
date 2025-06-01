@@ -22,11 +22,11 @@ export default function HeroSection({ whatsappLink }: HeroSectionProps) {
         setIsScrolled(false)
       }
 
-      // Subtle parallax effect - move background slower than scroll
-      setParallaxOffset(scrollY * 0.3)
+      // Subtle parallax effect - very gentle movement
+      setParallaxOffset(scrollY * 0.1)
     }
 
-    window.addEventListener("scroll", handleScroll)
+    window.addEventListener("scroll", handleScroll, { passive: true })
 
     // Ensure hero text animations trigger properly
     const heroTextElements = document.querySelectorAll('.hero-text-reveal')
@@ -81,9 +81,10 @@ export default function HeroSection({ whatsappLink }: HeroSectionProps) {
           src="/hero-band-restoration.webp"
           alt="Watch band restoration background"
           fill
-          className="object-cover parallax-slow"
+          className="object-cover transition-transform duration-75 ease-out"
           style={{
-            transform: `translateY(${parallaxOffset}px)`,
+            transform: `translate3d(0, ${parallaxOffset}px, 0)`,
+            willChange: 'transform'
           }}
           priority={true}
           fetchPriority="high"
@@ -100,27 +101,33 @@ export default function HeroSection({ whatsappLink }: HeroSectionProps) {
       {/* Hero Content */}
       <div className="relative">
         <div className="px-6 mx-auto sm:px-8 lg:px-12 max-w-7xl">
-          <div className="w-[60%]">
-            <h1 className="font-sans font-normal text-5xl sm:text-6xl lg:text-8xl tracking-tighter text-neutral-lighter">
+          <div className="w-[%]">
+            <h1 className="font-sans font-normal text-4xl sm:text-5xl lg:text-7xl tracking-tighter text-neutral-lighter">
               {/* Line 1: Always on its own line */}
               <span className="block">
-                讓錶帶重拾
+                錶帶「吊吊揈」？
               </span>
               {/* Line 2: Always on its own line */}
-              <span className="font-serif italic font-bold text-transparent bg-clip-text bg-gradient-to-r from-casal-lighter via-casal-light to-casal-lighter gradient-text-animate block">
-                開箱氣派
+              <span className="font-serif italic font-bold text-transparent bg-clip-text bg-gradient-to-r from-casal-lighter via-casal-light to-casal-lighter gradient-text-animate block mt-3">
+                是時候重拾緊緻！
               </span>
             </h1>
             <p className="hero-text-reveal hero-text-reveal-3 mt-6 font-sans text-base font-normal leading-7 text-neutral-lightest sm:text-lg sm:leading-8">
-            專為名錶修復<br />「鬆、花、崩凹」<br />
-            延續手錶不凡價值
+              {/* Mobile version: 4 lines */}
+              <span className="block sm:hidden">
+                專為名錶「虛位」及各種<br />佩戴痕跡而設的修復方案，<br />告別鬆動，迎接原廠級<br />貼合感與精緻外觀。
+              </span>
+              {/* Desktop version: 3 lines */}
+              <span className="hidden sm:block">
+                專為名錶「虛位」及各種佩戴痕跡而設的修復方案，<br />告別鬆動，迎接原廠級貼合感<br />與精緻外觀。
+              </span>
             </p>
 
             <div className="hero-text-reveal hero-text-reveal-4 flex flex-col sm:flex-row items-start mt-10 space-y-4 sm:space-y-0 sm:space-x-4">
               <Link
                 href={whatsappLink}
                 id="cta-hero-whatsapp"
-                className="btn-pulse w-full sm:w-auto inline-flex items-center justify-center px-5 py-3 font-sans text-base font-semibold transition-all duration-200 rounded-md sm:leading-8 bg-neutral-lightest text-neutral-darker hover:bg-neutral-light border-2 border-neutral-darker focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-casal focus:ring-offset-casal-darker"
+                className="btn-pulse w-full sm:w-auto inline-flex items-center justify-center px-5 py-3 font-sans text-base font-semibold transition-all duration-200 rounded-md sm:leading-8 bg-cream-lighter text-neutral-darker hover:bg-cream-light border-2 border-neutral-darker focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-casal focus:ring-offset-casal-darker"
                 onClick={() => {
                   if (typeof window !== 'undefined' && (window as any).dataLayer) {
                     ;(window as any).dataLayer.push({

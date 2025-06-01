@@ -12,7 +12,7 @@ const testimonials = [
     quote: "對我的潛水者錶帶的修復工作非常出色。它看起來又像新的一樣，而且周轉時間令人印象深刻。",
     name: "Ryan Lai",
     title: "Rolex Submariner Watch Band Restoration",
-    avatar: "/professional-man-portrait.png",
+    avatar: "/testimonials/testimonial-ryan-lai.webp",
   },
   {
     id: 2,
@@ -20,7 +20,7 @@ const testimonials = [
     quote: "我對修復我的古董卡地亞錶帶持懷疑態度，但結果超出了我的預期。對細節的關注令人驚嘆。",
     name: "Edith C.",
     title: "Yellow Gold Watch Band Scratch Removal and Tightening",
-    avatar: "/professional-woman-portrait.png",
+    avatar: "/testimonials/testimonial-edith-c.webp",
   },
   {
     id: 3,
@@ -28,7 +28,7 @@ const testimonials = [
     quote: "The repair on my husband's President watch band was outstanding. It looks brand new.",
     name: "Sarah Miller",
     title: "President Watch Band Full Restoration",
-    avatar: "/placeholder.svg?key=uk635",
+    avatar: "/testimonials/testimonial-sarah-miller.webp",
   },
 ]
 
@@ -91,14 +91,14 @@ export default function TestimonialsSection() {
                     </div>
 
                     <div className="flex items-center mt-8">
-                      <div className="relative h-11 w-11 rounded-full overflow-hidden">
+                      <div className="relative h-12 w-12 rounded-full overflow-hidden border-2 border-gray-200 flex-shrink-0">
                         <Image
                           src={testimonial.avatar || "/placeholder.svg"}
                           alt={testimonial.name}
                           fill
-                          className="object-cover"
+                          className="object-cover object-center"
                           loading="lazy"
-                          sizes="44px"
+                          sizes="48px"
                         />
                       </div>
                       <div className="ml-4">

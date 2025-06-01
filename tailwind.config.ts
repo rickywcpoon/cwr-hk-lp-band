@@ -101,6 +101,15 @@ const config: Config = {
           DEFAULT: "#5E2424",
           dark: "#4B1C1C",
         },
+        // Creamy Yellow Palette for CTA buttons
+        cream: {
+          lightest: "#FFFEF9",
+          lighter: "#FFF9E6",
+          light: "#FFF2CC",
+          DEFAULT: "#FFEB99",
+          dark: "#E6D280",
+          darker: "#CCB966",
+        },
       },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
