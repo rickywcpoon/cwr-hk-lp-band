@@ -117,7 +117,7 @@ export default function RestorationProcess() {
   return (
     <div className="w-full max-w-6xl mx-auto">
       <div className="text-center mb-12 animate-on-scroll">
-        <h2 className="text-3xl font-bold mb-2 text-gray-900">我們的精細修復過程</h2>
+        <h2 className="text-3xl font-bold mb-2 text-gray-900">精細修復</h2>
         <p className="text-xl text-gray-500 mb-2">金屬錶帶修復過程</p>
         <p className="text-gray-600 max-w-3xl mx-auto">
           每條手錶錶帶都經過全面的修復過程，結合傳統工藝與現代技術，以達到卓越的效果。

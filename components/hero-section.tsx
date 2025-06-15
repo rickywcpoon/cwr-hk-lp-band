@@ -109,7 +109,7 @@ export default function HeroSection({ whatsappLink }: HeroSectionProps) {
               </span>
               {/* Line 2: Always on its own line */}
               <span className="font-serif italic font-bold text-transparent bg-clip-text bg-gradient-to-r from-casal-lighter via-casal-light to-casal-lighter gradient-text-animate block mt-3">
-                是時候重拾緊緻！
+                係時候重拾緊緻！
               </span>
             </h1>
             <p className="hero-text-reveal hero-text-reveal-3 mt-6 font-sans text-base font-normal leading-7 text-neutral-lightest sm:text-lg sm:leading-8">

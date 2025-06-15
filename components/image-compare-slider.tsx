@@ -3,6 +3,8 @@
 import { useState } from "react"
 import Image from "next/image"
 import { ReactCompareSlider, ReactCompareSliderImage } from "react-compare-slider"
+import { Carousel, CarouselContent, CarouselItem, CarouselPrevious, CarouselNext } from "./ui/carousel"
+import { useIsMobile } from "./ui/use-mobile"
 
 /**
  * Image Compare Slider Component
@@ -53,8 +55,16 @@ const imagePairs = [
 // Combined Gallery and Slider logic into one component for simplicity in JSX adaptation
 export function ImageCompareSlider() {
   const [selectedIndex, setSelectedIndex] = useState(0) // Start with the first pair
+  const [currentSlide, setCurrentSlide] = useState(0)
+  const isMobile = useIsMobile()
 
   const selectedPair = imagePairs[selectedIndex]
+
+  const carouselImages = [
+    { src: "/rolex-before-after-1.webp", alt: "Rolex錶帶修復前後對比 1" },
+    { src: "/rolex-before-after-2.webp", alt: "Rolex錶帶修復前後對比 2" },
+    { src: "/vc-bracelet-restored-sample.webp", alt: "VC錶帶修復樣本" }
+  ]
 
   return (
     <div className="flex flex-col items-center w-full">
@@ -116,6 +126,100 @@ export function ImageCompareSlider() {
           />
         </div>
       </div>
+
+      {/* Rolex Before/After Images - Responsive Grid or Carousel */}
+      {isMobile ? (
+        <div className="w-full mt-8 mb-4">
+          <Carousel 
+            opts={{ 
+              loop: true,
+              align: "start"
+            }}
+            className="w-full"
+            setApi={(api) => {
+              if (api) {
+                api.on("select", () => {
+                  setCurrentSlide(api.selectedScrollSnap())
+                })
+              }
+            }}
+          >
+            <CarouselContent className="-ml-2 md:-ml-4">
+              {carouselImages.map((image, index) => (
+                <CarouselItem key={index} className="pl-2 md:pl-4 basis-[85%]">
+                  <div className="p-1">
+                    <Image
+                      src={image.src}
+                      alt={image.alt}
+                      width={900}
+                      height={600}
+                      className="w-full h-auto object-cover rounded-lg shadow-md"
+                      sizes="85vw"
+                      quality={90}
+                      loading="lazy"
+                      unoptimized={true}
+                    />
+                  </div>
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+          </Carousel>
+          
+          {/* Carousel Indicators */}
+          <div className="flex justify-center mt-4 space-x-2">
+            {carouselImages.map((_, index) => (
+              <div 
+                key={index}
+                className={`w-2 h-2 rounded-full transition-colors duration-200 ${
+                  currentSlide === index ? 'bg-burgundy' : 'bg-gray-300'
+                }`}
+              />
+            ))}
+          </div>
+        </div>
+      ) : (
+        <div className="flex flex-col md:flex-row gap-4 w-full mt-8 mb-4">
+          <div className="flex-1">
+            <Image
+              src="/rolex-before-after-1.webp"
+              alt="Rolex錶帶修復前後對比 1"
+              width={600}
+              height={400}
+              className="w-full h-auto object-cover rounded-lg shadow-md"
+              sizes="(max-width: 768px) 100vw, 33vw"
+              quality={85}
+              loading="lazy"
+              unoptimized={true}
+            />
+          </div>
+          <div className="flex-1">
+            <Image
+              src="/rolex-before-after-2.webp"
+              alt="Rolex錶帶修復前後對比 2"
+              width={600}
+              height={400}
+              className="w-full h-auto object-cover rounded-lg shadow-md"
+              sizes="(max-width: 768px) 100vw, 33vw"
+              quality={85}
+              loading="lazy"
+              unoptimized={true}
+            />
+          </div>
+          <div className="flex-1">
+            <Image
+              src="/vc-bracelet-restored-sample.webp"
+              alt="VC錶帶修復樣本"
+              width={600}
+              height={400}
+              className="w-full h-auto object-cover rounded-lg shadow-md"
+              sizes="(max-width: 768px) 100vw, 33vw"
+              quality={85}
+              loading="lazy"
+              unoptimized={true}
+            />
+          </div>
+        </div>
+      )}
 
       {/* Thumbnail Selectors and Label will be removed from here */}
     </div>
