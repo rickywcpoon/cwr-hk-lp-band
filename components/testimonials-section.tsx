@@ -46,7 +46,7 @@ export default function TestimonialsSection() {
           {/* Google Reviews Pill */}
           <div className="mb-6 inline-flex items-center gap-2 bg-white text-neutral-darker px-4 py-2 rounded-full shadow-md">
             <Image src="/google-bubble.webp" alt="Google logo" width={24} height={24} loading="lazy" />
-            <span className="font-semibold">480+ 5</span>
+            <span className="font-semibold">500+ 5</span>
             <span className="text-yellow-500 text-xl">⭐</span>
             <span className="font-semibold">Reviews</span>
           </div>
