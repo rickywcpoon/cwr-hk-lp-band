@@ -21,6 +21,11 @@
 - **Design refinements** completed with modern parallax effects and improved typography.
 - **CTA button redesign** implemented with warm creamy yellow color scheme.
 - **Content optimization** enhanced messaging across key sections.
+- **Mobile carousel implementation** with Facebook/Instagram style peek view design.
+- **Responsive image display** with conditional rendering for mobile vs desktop layouts.
+- **Dynamic carousel indicators** with active state highlighting and smooth transitions.
+- **Image content expansion** with Rolex and VC bracelet restoration samples.
+- **Mobile-specific content** additions including Rolex restoration details in loose-vs-right-fit section.
 
 ## What's Left to Build
 

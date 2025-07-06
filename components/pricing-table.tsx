@@ -21,86 +21,65 @@ export default function PricingTable() {
 
   const priceData: Record<PriceCategory, PriceCategoryData> = {
     stainless: {
-      title: "不鏽鋼錶帶",
+      title: "修復不鏽鋼Rolex錶帶(Steel）",
       items: [
         {
-          name: "勞力士摺疊與實心五珠鏈",
-          price: "US$325 / HK$2,500",
-          description: "20毫米型號",
+          name: "Jubilee五珠帶",
+          price: "HKD 2,800起",
         },
         {
-          name: "勞力士蠔式鉚釘",
-          price: "US$360 / HK$2,800",
-          description: "19毫米 / 20毫米型號",
+          name: "Oyster Folded蠔式摺疊",
+          price: "HKD 3,200起",
         },
         {
-          name: "勞力士蠔式摺疊扣",
-          price: "US$360 / HK$2,800",
-          description: "19毫米 / 20毫米型號",
+          name: "Oyster Rivet蠔式鉚釘",
+          price: "HKD 3,200起",
         },
         {
-          name: "勞力士實心蠔式",
-          price: "US$450 / HK$3,500",
-          description: "20毫米型號",
-        },
-        {
-          name: "勞力士蠔式鉚釘擴展",
-          price: "US$560 / HK$4,300",
-          description: "20毫米型號",
+          name: "Oyster Solid蠔式實心",
+          price: "HKD 3,500 起",
         },
       ],
     },
     "two-tone": {
-      title: "雙色錶帶",
+      title: "修復金鋼Rolex錶帶 (Two-Tone)",
       items: [
         {
-          name: "瑞士製勞力士五珠鏈",
-          price: "US$360 / HK$2,800",
+          name: "Jubilee五珠錶帶(瑞士製)",
+          price: "HKD 2,800起",
         },
         {
-          name: "美國製勞力士五珠鏈",
-          price: "US$460 / HK$3,600",
+          name: "Oyster Folded蠔式摺疊",
+          price: "HKD 3,500 起",
         },
         {
-          name: "勞力士蠔式（摺疊與鉚釘）",
-          price: "US$420 / HK$3,500",
-          description: "19毫米型號",
+          name: "Oyster Rivet蠔式鉚釘",
+          price: "HKD 3,800 起",
         },
         {
-          name: "勞力士蠔式鉚釘",
-          price: "US$450 / HK$3,800",
-          description: "20毫米型號",
-        },
-        {
-          name: "勞力士摺疊蠔式",
-          price: "US$580 / HK$4,500",
-          description: "20毫米型號",
-        },
-        {
-          name: "勞力士實心蠔式",
-          price: "US$580 / HK$4,500",
-          description: "20毫米型號",
+          name: "Oyster Solid 蠔式實心",
+          price: "HKD 4,500 起",
         },
       ],
     },
     gold: {
-      title: "18K金錶帶（黃金、白金與玫瑰金）",
+      title: "修復18K金 Rolex錶帶（18K黃金、白金）",
       items: [
         {
-          name: "男士勞力士總統與五珠鏈",
-          price: "US$1,950+ / HK$15,300+",
-        },
-        {
-          name: "男士勞力士總統與五珠鏈（1990年後）",
-          price: "US$2,500+ / HK$19,500+",
-        },
-        {
-          name: "男士勞力士蠔式",
-          price: "US$2,850+ / HK$22,000+",
-        },
-        {
           name: "女士勞力士總統與五珠鏈",
-          price: "US$1,750+ / HK$13,600+",
+          price: "HKD 19,800起",
+        },
+        {
+          name: "18K President & Jubilee 總統及五珠帶(1990年前製)",
+          price: "HKD 25,800起",
+        },
+        {
+          name: "18K President & Jubilee 總統及五珠帶(1990年後製)",
+          price: "HKD 28,300起",
+        },
+        {
+          name: "18K Oyster Solid蠔式實心",
+          price: "HKD 33,800起",
         },
       ],
     },
