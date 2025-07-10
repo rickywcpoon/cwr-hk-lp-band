@@ -53,7 +53,7 @@ export default function TestimonialsSection() {
 
           {/* New Cantonese Text */}
           <p className="text-xl md:text-2xl font-semibold text-center text-gray-800 max-w-2xl">
-            全港唯一累積超過480條<br />Google五星正評的手錶維修專門店
+            全港唯一累積超過500條<br />Google五星正評的手錶維修專門店
           </p>
         </div>
 
