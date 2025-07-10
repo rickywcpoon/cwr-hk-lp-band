@@ -59,6 +59,33 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Before & After Gallery */}
+      <section className="py-20 bg-neutral-lightest">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <ScrollAnimationWrapper className="text-center mb-16">
+            <h2 className="text-3xl font-bold mb-4 text-neutral-darkest">真實案例・「錶」然一新</h2>
+            <p className="text-neutral-dark max-w-3xl mx-auto text-sm">
+            左右滑動，見證「飽經風霜」到「完美如初」的蛻變
+            </p>
+          </ScrollAnimationWrapper>
+
+          <ScrollAnimationWrapper animationClass="scale-in" className="max-w-4xl mx-auto pb-8">
+            <ImageCompareSlider />
+            <p className="text-center text-neutral-dark mt-4 text-sm">細節執著，完美追求</p>
+          </ScrollAnimationWrapper>
+
+          <ScrollAnimationWrapper className="mt-12 text-center">
+            <Link
+              href={whatsappLink}
+              className="btn-pulse bg-cream-lighter text-neutral-darker hover:bg-cream-light border-2 border-neutral-darker font-medium px-8 py-4 rounded-md inline-flex items-center justify-center transition-all duration-300 hover:scale-105 hover:shadow-lg"
+            >
+              讓我的手錶也煥然一新
+              <ChevronRight className="ml-2 h-5 w-5" />
+            </Link>
+          </ScrollAnimationWrapper>
+        </div>
+      </section>
+
       {/* Why Choose Us Section - USP Section */}
       <section className="py-20 bg-neutral-darkest text-neutral-lighter">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -115,33 +142,6 @@ export default function Home() {
                 </p>
               </div>
             </div>
-          </ScrollAnimationWrapper>
-        </div>
-      </section>
-
-      {/* Before & After Gallery */}
-      <section className="py-20 bg-neutral-lightest">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <ScrollAnimationWrapper className="text-center mb-16">
-            <h2 className="text-3xl font-bold mb-4 text-neutral-darkest">真實案例・「錶」然一新</h2>
-            <p className="text-neutral-dark max-w-3xl mx-auto text-sm">
-            左右滑動，見證「飽經風霜」到「完美如初」的蛻變
-            </p>
-          </ScrollAnimationWrapper>
-
-          <ScrollAnimationWrapper animationClass="scale-in" className="max-w-4xl mx-auto pb-8">
-            <ImageCompareSlider />
-            <p className="text-center text-neutral-dark mt-4 text-sm">細節執著，完美追求</p>
-          </ScrollAnimationWrapper>
-
-          <ScrollAnimationWrapper className="mt-12 text-center">
-            <Link
-              href={whatsappLink}
-              className="btn-pulse bg-cream-lighter text-neutral-darker hover:bg-cream-light border-2 border-neutral-darker font-medium px-8 py-4 rounded-md inline-flex items-center justify-center transition-all duration-300 hover:scale-105 hover:shadow-lg"
-            >
-              讓我的手錶也煥然一新
-              <ChevronRight className="ml-2 h-5 w-5" />
-            </Link>
           </ScrollAnimationWrapper>
         </div>
       </section>
