@@ -76,6 +76,19 @@ export default function LooseVsRightFit({ whatsappLink }: LooseVsRightFitProps) 
                   <>
                     <div className="my-6">
                       <Image
+                        src="/ap-band-before-after.webp"
+                        alt="AP bracelet full restoration example"
+                        width={600}
+                        height={400}
+                        className="w-full h-auto object-cover rounded-lg shadow-lg"
+                        sizes="100vw"
+                        quality={85}
+                        loading="lazy"
+                        unoptimized={true}
+                      />
+                    </div>
+                    <div className="my-6">
+                      <Image
                         src="/rolex-bracelet-full-restore.webp"
                         alt="Rolex bracelet full restoration example"
                         width={600}
@@ -88,7 +101,8 @@ export default function LooseVsRightFit({ whatsappLink }: LooseVsRightFitProps) 
                       />
                     </div>
                     <p className="text-base text-neutral-lighter mt-4">
-                      我們精通維修及修復各種Rolex 勞力士錶帶，包括不鏽鋼、金鋼和18K貴金屬等不同物料。即使已經鬆掉、變形、 甚至斷開，都可以原條修復。翻新時，除了會逐格增強結構和拉緊，經打磨後的錶帶亦會回復到開箱時的狀態。
+                      我們精通各大品牌設計靈魂: Rolex, Audemars Piguet, Patek Phillipe, Cartier, Vacheron Constantin 維修及修復各種金屬錶帶，包括不鏽鋼、金鋼和18K金等不同物料。
+                      即使已經鬆掉、變形、 甚至斷開，都可以原條修復。翻新時，除了會逐格增強結構和拉緊，經打磨後的錶帶亦會回復到開箱時的狀態。
                     </p>
                   </>
                 )}

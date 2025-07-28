@@ -161,8 +161,8 @@ export default function Home() {
         </ScrollAnimationWrapper>
       </section>
 
-      {/* Pricing Section - ServiceProcess style */}
-      <section className="py-20 bg-cocoa-bean-dark">
+      {/* Pricing Section - ServiceProcess style - HIDDEN */}
+      {/* <section className="py-20 bg-cocoa-bean-dark">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <ScrollAnimationWrapper className="text-center mb-16">
             <h2 className="text-3xl font-bold mb-4 text-neutral-lighter">明智投資・遠勝天價更換</h2>
@@ -203,7 +203,7 @@ export default function Home() {
             </p>
           </ScrollAnimationWrapper>
         </div>
-      </section>
+      </section> */}
 
       {/* Testimonials Section */}
       <TestimonialsSection />
