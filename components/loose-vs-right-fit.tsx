@@ -1,6 +1,5 @@
 "use client"
 
-import { useState, useEffect } from "react"
 import Image from "next/image"
 import Link from "next/link"
 import { MessageCircle } from "lucide-react"
@@ -11,25 +10,7 @@ interface LooseVsRightFitProps {
 }
 
 export default function LooseVsRightFit({ whatsappLink }: LooseVsRightFitProps) {
-  const [parallaxOffset, setParallaxOffset] = useState(0)
   const isMobile = useIsMobile()
-
-  useEffect(() => {
-    const handleScroll = () => {
-      const scrollY = window.scrollY
-      const sectionOffset = window.innerHeight * 0.5 // Start effect when section is halfway visible
-      
-      // Gentle upward movement that starts after hero section
-      if (scrollY > sectionOffset) {
-        setParallaxOffset(-(scrollY - sectionOffset) * 0.05)
-      } else {
-        setParallaxOffset(0)
-      }
-    }
-
-    window.addEventListener("scroll", handleScroll, { passive: true })
-    return () => window.removeEventListener("scroll", handleScroll)
-  }, [])
 
   return (
     <section className="py-20 bg-casal">
@@ -43,11 +24,7 @@ export default function LooseVsRightFit({ whatsappLink }: LooseVsRightFitProps) 
                 alt="鬆弛錶帶對比緊密貼合錶帶"
                 width={600}
                 height={400}
-                className="w-full h-auto object-cover transition-transform duration-100 ease-out"
-                style={{
-                  transform: `translate3d(0, ${parallaxOffset}px, 0)`,
-                  willChange: 'transform'
-                }}
+                className="w-full h-auto object-cover"
                 loading="eager"
                 sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 600px"
                 quality={85}
@@ -72,40 +49,37 @@ export default function LooseVsRightFit({ whatsappLink }: LooseVsRightFitProps) 
                 <p className="font-medium text-xl text-neutral-lighter">
                 錶帶的「虛位」不僅是影響美觀的小瑕疵，更是佩戴體驗與腕錶安全的大敵。我們專注解決錶帶「虛位」問題，恢復應有緊緻，讓腕錶穩固貼合。
                 </p>
-                {isMobile && (
-                  <>
-                    <div className="my-6">
-                      <Image
-                        src="/ap-band-before-after.webp"
-                        alt="AP bracelet full restoration example"
-                        width={600}
-                        height={400}
-                        className="w-full h-auto object-cover rounded-lg shadow-lg"
-                        sizes="100vw"
-                        quality={85}
-                        loading="lazy"
-                        unoptimized={true}
-                      />
-                    </div>
-                    <div className="my-6">
-                      <Image
-                        src="/rolex-bracelet-full-restore.webp"
-                        alt="Rolex bracelet full restoration example"
-                        width={600}
-                        height={400}
-                        className="w-full h-auto object-cover rounded-lg shadow-lg"
-                        sizes="100vw"
-                        quality={85}
-                        loading="lazy"
-                        unoptimized={true}
-                      />
-                    </div>
+                {/* Show images on all devices for now */}
+                <div className="my-6 animate-on-scroll">
+                  <Image
+                    src="/ap-band-before-after.webp"
+                    alt="AP bracelet full restoration example"
+                    width={600}
+                    height={400}
+                    className="w-full h-auto object-cover rounded-lg shadow-lg"
+                    sizes="100vw"
+                    quality={85}
+                    loading="lazy"
+                    unoptimized={true}
+                  />
+                </div>
+                <div className="my-6 animate-on-scroll">
+                  <Image
+                    src="/rolex-bracelet-full-restore.webp"
+                    alt="Rolex bracelet full restoration example"
+                    width={600}
+                    height={400}
+                    className="w-full h-auto object-cover rounded-lg shadow-lg"
+                    sizes="100vw"
+                    quality={85}
+                    loading="lazy"
+                    unoptimized={true}
+                  />
+                </div>
                     <p className="text-base text-neutral-lighter mt-4">
                       我們精通各大品牌設計靈魂: Rolex, Audemars Piguet, Patek Phillipe, Cartier, Vacheron Constantin 維修及修復各種金屬錶帶，包括不鏽鋼、金鋼和18K金等不同物料。
                       即使已經鬆掉、變形、 甚至斷開，都可以原條修復。翻新時，除了會逐格增強結構和拉緊，經打磨後的錶帶亦會回復到開箱時的狀態。
                     </p>
-                  </>
-                )}
               </div>
             </div>
           </div>

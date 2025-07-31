@@ -11,6 +11,7 @@ interface HeroSectionProps {
 export default function HeroSection({ whatsappLink }: HeroSectionProps) {
   const [isScrolled, setIsScrolled] = useState(false)
   const [parallaxOffset, setParallaxOffset] = useState(0)
+  const [pulseCount, setPulseCount] = useState(0)
 
   useEffect(() => {
     const handleScroll = () => {
@@ -46,8 +47,24 @@ export default function HeroSection({ whatsappLink }: HeroSectionProps) {
     }
   }, [])
 
+  // Pulsing animation effect for subtitle
+  useEffect(() => {
+    const pulseInterval = setInterval(() => {
+      setPulseCount(prev => {
+        if (prev < 5) {
+          return prev + 1
+        } else {
+          clearInterval(pulseInterval)
+          return prev
+        }
+      })
+    }, 600) // Pulse every 600ms for more responsive feel
+
+    return () => clearInterval(pulseInterval)
+  }, [])
+
   return (
-    <div className="relative pt-48 pb-12 bg-casal-darker xl:pt-60 sm:pb-16 lg:pb-32 xl:pb-48 2xl:pb-56">
+    <div className="relative pt-40 pb-12 bg-casal-darker xl:pt-40 sm:pb-16 lg:pb-32 xl:pb-48 2xl:pb-56">
       {/* Header */}
       <header
         className={`absolute inset-x-0 top-0 z-50 py-3 xl:py-4 transition-all duration-300 ${
@@ -93,9 +110,7 @@ export default function HeroSection({ whatsappLink }: HeroSectionProps) {
           loading="eager"
           unoptimized={true}
         />
-        <div className="absolute inset-0" style={{
-          background: 'linear-gradient(to bottom, rgba(15, 37, 35, 0.8) 0%, rgba(15, 37, 35, 0.4) 60%, transparent 70%)'
-        }}></div>
+        <div className="absolute inset-0 bg-casal-darker/50"></div>
       </div>
 
       {/* Hero Content */}
@@ -105,22 +120,33 @@ export default function HeroSection({ whatsappLink }: HeroSectionProps) {
             <h1 className="font-sans font-normal text-4xl sm:text-5xl lg:text-7xl tracking-tighter text-neutral-lighter">
               {/* Line 1: Always on its own line */}
               <span className="block">
-                錶帶磨蝕<br />
-                又殘又舊？
-              </span>
-              {/* Line 2: Always on its own line */}
-              <span className="font-serif italic font-bold text-transparent bg-clip-text bg-gradient-to-r from-casal-lighter via-casal-light to-casal-lighter gradient-text-animate block mt-3">
               還原您手錶嘅<br />『原有神髓』
               </span>
             </h1>
-            <p className="hero-text-reveal hero-text-reveal-3 mt-6 font-sans text-base font-normal leading-7 text-neutral-lightest sm:text-lg sm:leading-8">
+            
+            {/* Subtitle with pulsing animation */}
+            <h2 
+              className={`hero-text-reveal hero-text-reveal-3 mt-4 font-sans text-lg sm:text-xl lg:text-2xl font-medium leading-relaxed transition-all duration-300 ${
+                pulseCount < 5 ? 'animate-pulse-right' : ''
+              }`}
+              style={{
+                transform: pulseCount < 5 ? `translateX(${Math.sin(pulseCount * Math.PI) * 8}px)` : 'translateX(0)',
+                transition: 'transform 0.3s ease-in-out'
+              }}
+            >
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-casal-lighter to-casal-light">
+                錶帶磨蝕，又殘又舊？
+              </span>
+            </h2>
+            
+            <p className="hero-text-reveal hero-text-reveal-3 mt-4 font-sans text-base font-normal leading-7 text-neutral-lightest sm:text-lg sm:leading-8">
               {/* Mobile version: 4 lines */}
               <span className="block sm:hidden">
-                專為名錶「虛位」及各種<br />佩戴痕跡而設的修復方案，<br />告別鬆動，迎接原廠級<br />貼合感與精緻外觀。
+              Classic Watch Repair專為<br />錶帶「虛位」及各種佩戴<br />痕跡而設的全面修復方案<br />告別鬆動，再次感受<br />手錶原本貼合感
               </span>
               {/* Desktop version: 3 lines */}
               <span className="hidden sm:block">
-                專為名錶「虛位」及各種佩戴痕跡而設的修復方案，<br />告別鬆動，迎接原廠級貼合感<br />與精緻外觀。
+              Classic Watch Repair專為錶帶<br />「虛位」及各種佩戴痕跡而設<br />的全面修復方案，告別鬆動<br />再次感受手錶原本貼合感
               </span>
             </p>
 
